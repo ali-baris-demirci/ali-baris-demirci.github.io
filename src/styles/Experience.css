@@ -1,0 +1,287 @@
+/* ===================== */
+/*      EXPERIENCE         */
+/* ===================== */
+
+/* Timeline */
+.exp__timeline {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 60px;
+}
+
+.exp__timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+/* Main Cards */
+.exp__card {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.exp__card:last-child {
+  margin-bottom: 0;
+}
+
+.exp__timeline-dot {
+  position: absolute;
+  left: -33px;
+  top: 24px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--bg-white);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  z-index: 1;
+}
+
+.exp__card-content {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: var(--transition);
+}
+
+.exp__card-content:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.exp__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.exp__role {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.exp__company {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.exp__separator {
+  margin: 0 4px;
+}
+
+.exp__duration {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.exp__context {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.exp__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Toggle Button */
+.exp__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: var(--transition);
+}
+
+.exp__toggle:hover {
+  color: var(--primary-dark);
+}
+
+/* Expandable Details */
+.exp__details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.exp__detail-section {
+  margin-bottom: 20px;
+}
+
+.exp__detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.exp__detail-section h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.exp__detail-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exp__detail-section li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.exp__detail-section li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.exp__achievements li::before {
+  content: '✓';
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Earlier Experience */
+.exp__earlier {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.exp__earlier-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.exp__earlier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.exp__earlier-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.exp__earlier-dot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  margin-top: 6px;
+}
+
+.exp__earlier-content {
+  flex: 1;
+}
+
+.exp__earlier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.exp__earlier-role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.exp__earlier-duration {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.exp__earlier-company {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.exp__earlier-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===================== */
+/*    RESPONSIVE           */
+/* ===================== */
+@media (max-width: 768px) {
+  .exp__timeline {
+    padding-left: 30px;
+  }
+
+  .exp__timeline::before {
+    left: 10px;
+  }
+
+  .exp__timeline-dot {
+    left: -27px;
+  }
+
+  .exp__card-header {
+    flex-direction: column;
+  }
+
+  .exp__duration {
+    align-self: flex-start;
+  }
+
+  .exp__card-content {
+    padding: 20px;
+  }
+
+  .exp__earlier {
+    padding: 24px;
+  }
+
+  .exp__earlier-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

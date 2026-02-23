@@ -1,0 +1,138 @@
+/* ===================== */
+/*       CONTACT           */
+/* ===================== */
+.contact__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Contact Cards */
+.contact__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact__card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(4px);
+}
+
+.contact__card--location {
+  cursor: default;
+}
+
+.contact__card--location:hover {
+  transform: none;
+}
+
+.contact__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.contact__card-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact__card-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.contact__card-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* CTA Box */
+.contact__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.contact__cta-content {
+  text-align: center;
+  padding: 48px 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+}
+
+.contact__cta-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.contact__cta-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.contact__cta-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ===================== */
+/*    RESPONSIVE           */
+/* ===================== */
+@media (max-width: 768px) {
+  .contact__content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact__cta-content {
+    padding: 36px 24px;
+  }
+}

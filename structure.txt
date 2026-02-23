@@ -1,0 +1,39 @@
+ali-baris-demirci.github.io/
+├── public/
+│   ├── profile.jpg          ← your photo
+│   └── Ali_Baris_Demirci_Resume.pdf  ← your master resume
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Skills.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Education.jsx
+│   │   ├── Certifications.jsx
+│   │   ├── Interests.jsx
+│   │   ├── Contact.jsx
+│   │   └── Footer.jsx
+│   ├── data/
+│   │   └── portfolioData.js
+│   ├── styles/
+│   │   ├── Global.css
+│   │   ├── Navbar.css
+│   │   ├── Hero.css
+│   │   ├── About.css
+│   │   ├── Skills.css
+│   │   ├── Experience.css
+│   │   ├── Projects.css
+│   │   ├── Education.css
+│   │   ├── Certifications.css
+│   │   ├── Interests.css
+│   │   ├── Contact.css
+│   │   └── Footer.css
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+├── LICENSE
+└── README.md

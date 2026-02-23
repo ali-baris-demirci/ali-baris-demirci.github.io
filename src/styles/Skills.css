@@ -1,0 +1,127 @@
+/* ===================== */
+/*        SKILLS           */
+/* ===================== */
+.skills__group {
+  margin-bottom: 48px;
+}
+
+.skills__group:last-child {
+  margin-bottom: 0;
+}
+
+.skills__group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.skills__group-icon {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.skills__group-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Card Grid */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.skills__card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.skills__card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.skills__card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills__tags--wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Bottom Row */
+.skills__bottom {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+}
+
+.skills__group--half {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  margin-bottom: 0;
+}
+
+/* Languages */
+.skills__languages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skills__language {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-light);
+  border-radius: var(--radius-sm);
+}
+
+.skills__language-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.skills__language-level {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+  background: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ===================== */
+/*    RESPONSIVE           */
+/* ===================== */
+@media (max-width: 768px) {
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills__bottom {
+    grid-template-columns: 1fr;
+  }
+}
