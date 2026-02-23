@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-scroll'
 import { navLinks, personalInfo } from '../data/portfolioData'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaHourglassStart} from 'react-icons/fa'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
           className="navbar__logo"
           onClick={closeMenu}
         >
-          {'<'} {personalInfo.name.split(' ')[0]} {'/>'} 
+          <FaHourglassStart className="navbar__logo-icon" /> {personalInfo.name}
         </Link>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>

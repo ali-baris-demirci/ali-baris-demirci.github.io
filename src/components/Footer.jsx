@@ -1,5 +1,5 @@
 import { personalInfo } from '../data/portfolioData'
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaHourglassStart } from 'react-icons/fa'
 import '../styles/Footer.css'
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer__container container">
         <div className="footer__top">
           <div className="footer__brand">
-            <span className="footer__logo">{'<'} Ali {'/>'}</span>
+            <span className="footer__logo"><FaHourglassStart className="footer__logo-icon" /> {personalInfo.name}</span>
             <p className="footer__tagline">
               Turning data into decisions, one dashboard at a time.
             </p>
@@ -46,7 +46,7 @@ const Footer = () => {
             © {currentYear} Ali Baris Demirci. All rights reserved.
           </p>
           <p className="footer__made">
-            Made with <FaHeart className="footer__heart" /> using React
+            ""
           </p>
         </div>
       </div>

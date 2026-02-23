@@ -160,4 +160,9 @@
   .navbar__toggle {
     display: block;
   }
+  .navbar__logo-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+    vertical-align: middle;
+  }
 }

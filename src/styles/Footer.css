@@ -104,4 +104,9 @@
     gap: 8px;
     text-align: center;
   }
+  .footer__logo-icon {
+    margin-right: 8px;
+    font-size: 1rem;
+    vertical-align: middle;
+  }
 }
