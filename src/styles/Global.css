@@ -69,14 +69,16 @@ img {
 /*    UTILITIES            */
 /* ===================== */
 .section {
-  padding: 80px 24px;
+  padding: 100px 24px;
 }
 
 .section--alt {
+  padding: 100px 24px;
   background-color: var(--bg-light);
 }
 
 .section--dark {
+  padding: 100px 24px;
   background-color: var(--bg-dark);
   color: var(--text-light);
 }

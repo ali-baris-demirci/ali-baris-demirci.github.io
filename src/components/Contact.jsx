@@ -1,6 +1,6 @@
 import { personalInfo } from '../data/portfolioData'
 import {
-  FaEnvelope, FaPhone, FaLinkedin, FaGithub,
+  FaEnvelope, FaLinkedin, FaGithub,
   FaMapMarkerAlt, FaPaperPlane
 } from 'react-icons/fa'
 import '../styles/Contact.css'
@@ -28,17 +28,6 @@ const Contact = () => {
                 <p className="contact__card-value">{personalInfo.email}</p>
               </div>
             </a>
-
-            <a href={`tel:${personalInfo.phone}`} className="contact__card">
-              <div className="contact__card-icon">
-                <FaPhone />
-              </div>
-              <div>
-                <h3 className="contact__card-title">Phone</h3>
-                <p className="contact__card-value">{personalInfo.phone}</p>
-              </div>
-            </a>
-
             <a
               href={personalInfo.linkedin}
               target="_blank"

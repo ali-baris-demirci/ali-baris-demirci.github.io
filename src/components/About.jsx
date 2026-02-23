@@ -1,5 +1,5 @@
 import { summary, personalInfo } from '../data/portfolioData'
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaBriefcase, FaGraduationCap } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaEnvelope, FaBriefcase, FaGraduationCap } from 'react-icons/fa'
 import '../styles/About.css'
 
 const About = () => {
@@ -36,13 +36,6 @@ const About = () => {
                 <div>
                   <strong>Email</strong>
                   <p>{personalInfo.email}</p>
-                </div>
-              </li>
-              <li className="about__fact">
-                <span className="about__fact-icon"><FaPhone /></span>
-                <div>
-                  <strong>Phone</strong>
-                  <p>{personalInfo.phone}</p>
                 </div>
               </li>
               <li className="about__fact">

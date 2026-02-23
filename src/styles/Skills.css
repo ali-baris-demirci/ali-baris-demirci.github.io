@@ -113,6 +113,21 @@
   border-radius: 20px;
 }
 
+/* Three Column Bottom */
+.skills__bottom-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.skills__group--third {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  margin-bottom: 0;
+}
+
 /* ===================== */
 /*    RESPONSIVE           */
 /* ===================== */
@@ -122,6 +137,10 @@
   }
 
   .skills__bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .skills__bottom-three {
     grid-template-columns: 1fr;
   }
 }

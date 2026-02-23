@@ -1,5 +1,5 @@
 import { skills } from '../data/portfolioData'
-import { FaCode, FaTools, FaUsers, FaGlobe } from 'react-icons/fa'
+import { FaCode, FaTools, FaUsers, FaGlobe, FaProjectDiagram } from 'react-icons/fa'
 import '../styles/Skills.css'
 
 const Skills = () => {
@@ -51,9 +51,10 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Soft Skills & Languages */}
-        <div className="skills__bottom">
-          <div className="skills__group skills__group--half">
+        {/* Bottom Row */}
+        <div className="skills__bottom-three">
+          {/* Soft Skills */}
+          <div className="skills__group skills__group--third">
             <div className="skills__group-header">
               <FaUsers className="skills__group-icon" />
               <h3 className="skills__group-title">Soft Skills</h3>
@@ -65,7 +66,21 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="skills__group skills__group--half">
+          {/* Methodologies */}
+          <div className="skills__group skills__group--third">
+            <div className="skills__group-header">
+              <FaProjectDiagram className="skills__group-icon" />
+              <h3 className="skills__group-title">Methodologies</h3>
+            </div>
+            <div className="skills__tags skills__tags--wrap">
+              {skills.methodologies.map((method, index) => (
+                <span className="tag" key={index}>{method}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Languages */}
+          <div className="skills__group skills__group--third">
             <div className="skills__group-header">
               <FaGlobe className="skills__group-icon" />
               <h3 className="skills__group-title">Languages</h3>

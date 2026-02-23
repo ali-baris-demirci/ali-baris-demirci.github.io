@@ -46,7 +46,7 @@ const Interests = () => {
             </div>
             <div className="interests__fun-card">
               <span className="interests__fun-emoji">🎸</span>
-              <p>Plays the ukulele — always learning a new song</p>
+              <p>Plays the ukulele - always learning a new song</p>
             </div>
             <div className="interests__fun-card">
               <span className="interests__fun-emoji">🎓</span>
@@ -54,7 +54,7 @@ const Interests = () => {
             </div>
             <div className="interests__fun-card">
               <span className="interests__fun-emoji">📊</span>
-              <p>Top 0.1% in ÖSS 2009 — Turkey's national university exam (~1.4M+ students)</p>
+              <p>Top 0.1% in ÖSS 2009 - Turkey's national university exam (~1.4M+ students)</p>
             </div>
           </div>
         </div>
