@@ -10,7 +10,9 @@ const Footer = () => {
       <div className="footer__container container">
         <div className="footer__top">
           <div className="footer__brand">
-            <span className="footer__logo"><FaHourglassStart className="footer__logo-icon" /> {personalInfo.name}</span>
+            <span className="footer__logo">
+              <FaHourglassStart className="footer__logo-icon" />
+            </span>
             <p className="footer__tagline">
               Turning data into decisions, one dashboard at a time.
             </p>
@@ -44,9 +46,6 @@ const Footer = () => {
         <div className="footer__bottom">
           <p className="footer__copyright">
             © {currentYear} Ali Baris Demirci. All rights reserved.
-          </p>
-          <p className="footer__made">
-            ""
           </p>
         </div>
       </div>

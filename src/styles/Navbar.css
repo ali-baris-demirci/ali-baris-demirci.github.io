@@ -29,16 +29,27 @@
 
 /* Logo */
 .navbar__logo {
+  display: flex;
+  align-items: center;
   font-size: 1.3rem;
   font-weight: 700;
   color: white;
   cursor: pointer;
   transition: var(--transition);
-  letter-spacing: -0.5px;
 }
 
 .navbar--scrolled .navbar__logo {
   color: var(--primary);
+}
+
+.navbar__logo-icon {
+  font-size: 1.4rem;
+  transition: var(--transition);
+}
+
+.navbar__logo:hover .navbar__logo-icon {
+  transform: rotate(180deg);
+  color: var(--accent);
 }
 
 /* Links */
@@ -159,10 +170,5 @@
 
   .navbar__toggle {
     display: block;
-  }
-  .navbar__logo-icon {
-    margin-right: 8px;
-    font-size: 1.1rem;
-    vertical-align: middle;
   }
 }

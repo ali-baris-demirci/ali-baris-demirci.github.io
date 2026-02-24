@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Top bar -->
+  <rect x="2" y="1" width="28" height="3" rx="1.5" fill="#2563eb"/>
+  <!-- Bottom bar -->
+  <rect x="2" y="28" width="28" height="3" rx="1.5" fill="#2563eb"/>
+  <!-- Upper half — filled (sand at top = hourglass start) -->
+  <polygon points="4,4 28,4 16,16" fill="#2563eb"/>
+  <!-- Lower half — empty/faded -->
+  <polygon points="4,28 28,28 16,16" fill="#2563eb" opacity="0.3"/>
+</svg>

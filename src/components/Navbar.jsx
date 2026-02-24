@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-scroll'
 import { navLinks, personalInfo } from '../data/portfolioData'
-import { FaBars, FaTimes, FaHourglassStart} from 'react-icons/fa'
+import { FaBars, FaTimes, FaHourglassStart } from 'react-icons/fa'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
@@ -28,8 +28,9 @@ const Navbar = () => {
           duration={500}
           className="navbar__logo"
           onClick={closeMenu}
+          aria-label="Back to top"
         >
-          <FaHourglassStart className="navbar__logo-icon" /> {personalInfo.name}
+          <FaHourglassStart className="navbar__logo-icon" />
         </Link>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>

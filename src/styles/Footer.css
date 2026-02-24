@@ -20,10 +20,21 @@
 }
 
 .footer__logo {
+  display: inline-flex;
+  align-items: center;
   font-size: 1.2rem;
   font-weight: 700;
   color: white;
-  letter-spacing: -0.5px;
+}
+
+.footer__logo-icon {
+  font-size: 1.3rem;
+  transition: var(--transition);
+}
+
+.footer__logo-icon:hover {
+  transform: rotate(180deg);
+  color: var(--accent);
 }
 
 .footer__tagline {
@@ -103,10 +114,5 @@
     flex-direction: column;
     gap: 8px;
     text-align: center;
-  }
-  .footer__logo-icon {
-    margin-right: 8px;
-    font-size: 1rem;
-    vertical-align: middle;
   }
 }
