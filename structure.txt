@@ -1,7 +1,12 @@
 ali-baris-demirci.github.io/
 ├── public/
-│   ├── profile.jpg          ← your photo
-│   └── Ali_Baris_Demirci_Resume.pdf  ← your master resume
+│   ├── profile.png                        ← profile photo
+│   ├── Ali_Baris_Demirci_Resume.pdf    ← master resume
+│   ├── favicon.svg                     ← hourglass favicon
+│   ├── og-preview.png                  ← Open Graph preview image (1200×630)
+│   ├── robots.txt                      ← search engine crawler rules
+│   ├── sitemap.xml                     ← sitemap for Google indexing
+│   └── 404.html                        ← SPA redirect for unknown routes
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
@@ -16,9 +21,9 @@ ali-baris-demirci.github.io/
 │   │   ├── Contact.jsx
 │   │   └── Footer.jsx
 │   ├── data/
-│   │   └── portfolioData.js
+│   │   └── portfolioData.js            ← all site content lives here
 │   ├── styles/
-│   │   ├── Global.css
+│   │   ├── Global.css                  ← CSS variables, reset, utilities
 │   │   ├── Navbar.css
 │   │   ├── Hero.css
 │   │   ├── About.css
@@ -35,5 +40,6 @@ ali-baris-demirci.github.io/
 ├── index.html
 ├── package.json
 ├── vite.config.js
-├── LICENSE
+├── structure.txt                       ← this file
+├── LICENSE                             ← MIT for code, © for content
 └── README.md
