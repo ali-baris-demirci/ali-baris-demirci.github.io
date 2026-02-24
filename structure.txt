@@ -3,7 +3,7 @@ ali-baris-demirci.github.io/
 │   ├── profile.png                        ← profile photo
 │   ├── Ali_Baris_Demirci_Resume.pdf    ← master resume
 │   ├── favicon.svg                     ← hourglass favicon
-│   ├── og-preview.png                  ← Open Graph preview image (1200×630)
+│   ├── og-preview.jpg                  ← Open Graph preview image (1200×630)
 │   ├── robots.txt                      ← search engine crawler rules
 │   ├── sitemap.xml                     ← sitemap for Google indexing
 │   └── 404.html                        ← SPA redirect for unknown routes
