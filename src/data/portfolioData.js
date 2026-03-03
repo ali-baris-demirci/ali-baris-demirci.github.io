@@ -9,7 +9,7 @@ export const personalInfo = {
   profilePhoto: "/profile.jpg",
 }
 
-export const summary = `Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions.`
+export const summary = `Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack with hands-on training in dbt and Apache Kafka event streaming architecture.`
 
 export const highlights = [
   { label: "Years Experience", value: "6+" },
@@ -31,8 +31,8 @@ export const skills = {
   tools: [
     { category: "BI & Visualization", items: ["Power BI", "QlikView", "Qlik Sense", "Tableau", "NPrinting"] },
     { category: "ML & Data Science", items: ["Keras", "PyTorch", "OpenCV", "YOLO", "scikit-learn"] },
-    { category: "Big Data", items: ["Apache Spark"] },
-    { category: "Data Engineering", items: ["Azure Data Factory", "Oracle Data Integrator", "Azure SQL", "MSSQL", "SSMS"] },
+    { category: "Big Data & Streaming", items: ["Apache Spark", "Apache Kafka (In Progress)"] },
+    { category: "Data Engineering", items: ["Azure Data Factory", "Oracle Data Integrator", "Azure SQL", "MSSQL", "SSMS", "dbt (In Progress)"] },
     { category: "E-Commerce / PIM", items: ["Salsify", "Amazon Seller Central", "Amazon Vendor Central"] },
     { category: "ERP", items: ["Acumatica"] },
     { category: "Development", items: ["Jupyter Notebook", "GitHub", "VS Code"] },
@@ -261,6 +261,24 @@ export const education = [
 ]
 
 export const certifications = [
+  {
+    name: "Agentic AI",
+    provider: "ElevateSoul",
+    year: "In Progress",
+    link: "https://elevatesoul.ai/courses/agentic-ai",
+  },
+  {
+    name: "Apache Kafka (Event Streaming)",
+    provider: "Confluent Developer",
+    year: "In Progress",
+    link: "https://developer.confluent.io/courses/apache-kafka/events/",
+  },
+  {
+    name: "dbt Fundamentals",
+    provider: "dbt Labs",
+    year: "In Progress",
+    link: "https://learn.getdbt.com/learn/course/dbt-fundamentals/",
+  },
   {
     name: "Agentic AI: A Framework for Planning and Execution",
     provider: "LinkedIn",
