@@ -33,13 +33,12 @@ const Certifications = () => {
                   <h3 className="certs__card-title">{cert.name}</h3>
                   <div className="certs__card-meta">
                     <span className="certs__card-provider">{cert.provider}</span>
-                    <span className="certs__card-year">
-                      {isInProgress(cert) ? new Date().getFullYear() : cert.year}
-                    </span>
-                    {isInProgress(cert) && (
-                      <span className="certs__badge">
+                    {isInProgress(cert) ? (
+                      <span className="certs__card-year certs__card-year--progress">
                         <FaSpinner className="certs__badge-icon" /> In Progress
                       </span>
+                    ) : (
+                      <span className="certs__card-year">{cert.year}</span>
                     )}
                   </div>
                 </div>

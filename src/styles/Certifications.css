@@ -95,22 +95,17 @@
   opacity: 0.6;
 }
 
-/* In Progress Badge */
-.certs__badge {
+/* In Progress Year Pill */
+.certs__card-year--progress {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 10px;
-  font-size: 0.7rem;
-  font-weight: 600;
   color: #f59e0b;
   background: #fef3c7;
-  border-radius: 999px;
-  white-space: nowrap;
 }
 
 .certs__badge-icon {
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   animation: spin 2s linear infinite;
 }
 
