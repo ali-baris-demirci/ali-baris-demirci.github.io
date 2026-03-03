@@ -41,7 +41,7 @@ const Certifications = () => {
                   <div className="certs__card-meta">
                     <span className="certs__card-provider">{cert.provider}</span>
                     <span className="certs__card-year">
-                      {isInProgress(cert) ? '2025' : cert.year}
+                      {isInProgress(cert) ? new Date().getFullYear() : cert.year}
                     </span>
                   </div>
                 </div>
