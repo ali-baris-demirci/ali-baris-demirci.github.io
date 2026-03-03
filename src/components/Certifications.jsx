@@ -26,18 +26,16 @@ const Certifications = () => {
                 className={`certs__card ${isInProgress(cert) ? 'certs__card--in-progress' : ''}`}
                 key={index}
               >
+                {isInProgress(cert) && (
+                  <span className="certs__badge">
+                    <FaSpinner className="certs__badge-icon" /> In Progress
+                  </span>
+                )}
                 <div className="certs__card-icon">
                   <FaAward />
                 </div>
                 <div className="certs__card-content">
-                  <h3 className="certs__card-title">
-                    {cert.name}
-                    {isInProgress(cert) && (
-                      <span className="certs__badge">
-                        <FaSpinner className="certs__badge-icon" /> In Progress
-                      </span>
-                    )}
-                  </h3>
+                  <h3 className="certs__card-title">{cert.name}</h3>
                   <div className="certs__card-meta">
                     <span className="certs__card-provider">{cert.provider}</span>
                     <span className="certs__card-year">
