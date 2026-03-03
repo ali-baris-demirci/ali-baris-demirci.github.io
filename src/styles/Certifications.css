@@ -55,7 +55,8 @@
 .certs__card-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .certs__card-provider {
@@ -84,35 +85,28 @@
   color: var(--primary);
 }
 
-/* ===================== */
-/*    RESPONSIVE           */
-/* ===================== */
-@media (max-width: 768px) {
-  .certs__grid {
-    grid-template-columns: 1fr;
-  }
+/* In Progress Card */
+.certs__card--in-progress {
+  border: 1px dashed var(--primary);
+}
 
-  .certs__card {
-    padding: 16px 20px;
-  }
+.certs__card--in-progress .certs__card-icon {
+  color: var(--primary);
+  opacity: 0.6;
 }
 
 /* In Progress Badge */
 .certs__badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 3px 10px;
-  font-size: 0.65rem;
+  padding: 2px 10px;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-light);
+  color: #f59e0b;
+  background: #fef3c7;
   border-radius: 999px;
   white-space: nowrap;
-  z-index: 1;
 }
 
 .certs__badge-icon {
@@ -125,14 +119,15 @@
   to { transform: rotate(360deg); }
 }
 
-/* In Progress Card Style */
-.certs__card--in-progress {
-  border: 1px dashed var(--primary);
-  position: relative;
-}
+/* ===================== */
+/*    RESPONSIVE           */
+/* ===================== */
+@media (max-width: 768px) {
+  .certs__grid {
+    grid-template-columns: 1fr;
+  }
 
-.certs__card--in-progress .certs__card-icon {
-  color: var(--primary);
-  opacity: 0.6;
+  .certs__card {
+    padding: 16px 20px;
+  }
 }
-
