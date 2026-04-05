@@ -9,7 +9,7 @@ export const personalInfo = {
   profilePhoto: "/profile.jpg",
 }
 
-export const summary = `Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture.`
+export const summary = "Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture."
 export const highlights = [
   { label: "Years Experience", value: "6+" },
   { label: "Stakeholders Served", value: "100+" },
