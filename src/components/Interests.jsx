@@ -1,4 +1,4 @@
-import { interests, achievements } from '../data/portfolioData'
+import { interests } from '../data/portfolioData'
 import {
   FaChess, FaGamepad, FaMusic, FaFutbol, FaDice, FaRunning
 } from 'react-icons/fa'
@@ -34,29 +34,6 @@ const Interests = () => {
               </div>
             )
           })}
-        </div>
-
-        {/* Fun Facts */}
-        <div className="interests__fun">
-          <h3 className="interests__fun-title">⚡ Fun Facts</h3>
-          <div className="interests__fun-grid">
-            <div className="interests__fun-card">
-              <span className="interests__fun-emoji">🥏</span>
-              <p>Ultimate frisbee tournament champion & team assist leader</p>
-            </div>
-            <div className="interests__fun-card">
-              <span className="interests__fun-emoji">🎸</span>
-              <p>Plays the ukulele - always learning a new song</p>
-            </div>
-            <div className="interests__fun-card">
-              <span className="interests__fun-emoji">🎓</span>
-              <p>Finished a 4-year B.A. degree in just 3 years</p>
-            </div>
-            <div className="interests__fun-card">
-              <span className="interests__fun-emoji">📊</span>
-              <p>Top 0.1% in ÖSS 2009 - Turkey's national university exam (~1.4M+ students)</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
