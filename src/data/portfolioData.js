@@ -9,7 +9,8 @@ export const personalInfo = {
   profilePhoto: "/profile.jpg",
 }
 
-export const summary = "Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture."
+export const summary = `Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture.`
+
 export const highlights = [
   { label: "Years Experience", value: "6+" },
   { label: "Stakeholders Served", value: "100+" },
@@ -31,8 +32,7 @@ export const skills = {
     { category: "BI & Visualization", items: ["Power BI", "QlikView", "Qlik Sense", "Tableau", "NPrinting"] },
     { category: "ML & Data Science", items: ["Keras", "PyTorch", "OpenCV", "YOLO", "scikit-learn"] },
     { category: "Big Data & Streaming", items: ["Apache Spark", "Apache Kafka (In Progress)"] },
-    { category: "Data Engineering", items: ["Azure Data Factory", "Oracle Data Integrator", "Azure SQL", "MSSQL", "SSMS", "dbt"] },
-    { category: "E-Commerce / PIM", items: ["Salsify", "Amazon Seller Central", "Amazon Vendor Central"] },
+    { category: "Data Engineering", items: ["Azure Data Factory", "Oracle Data Integrator", "Azure SQL", "MSSQL", "SSMS", "dbt", "Snowflake"] },
     { category: "ERP", items: ["Acumatica"] },
     { category: "Development", items: ["Jupyter Notebook", "GitHub", "VS Code"] },
     { category: "Productivity", items: ["Excel (Reporting, Validation, Ad-hoc Analysis)"] },
@@ -47,11 +47,11 @@ export const skills = {
     "Data Culture Advocacy",
   ],
   methodologies: [
-  "Agile",
-  "Kanban",
-  "Scrum",
-  "Six Sigma (Foundations)",
-  "Data Quality Principles",
+    "Agile",
+    "Kanban",
+    "Scrum",
+    "Six Sigma (Foundations)",
+    "Data Quality Principles",
   ],
   languages: [
     { language: "English", level: "Proficient" },
@@ -276,7 +276,7 @@ export const certifications = [
     name: "dbt Fundamentals",
     provider: "dbt Labs",
     year: "2025",
-    link: "https://credentials.getdbt.com/3966549d-2caf-4bcf-b896-475cd40c1346",
+    link: "https://credentials.getdbt.com/3966549d-2caf-4bcf-b896-475cd40c1346#acc.ljg8hy3x",
   },
   {
     name: "Agentic AI: A Framework for Planning and Execution",
