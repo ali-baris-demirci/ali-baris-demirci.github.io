@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "Data Analyst | BI Specialist | Data Engineer",
   location: "Izmir, Türkiye (Open to Relocation)",
   email: "alibarisdemirci@gmail.com",
-  linkedin: "https://linkedin.com/in/ali-baris-demirci",
+  linkedin: "https://www.linkedin.com/in/ali-baris-demirci",
   github: "https://github.com/ali-baris-demirci",
   resumeFile: "/Ali_Baris_Demirci_Resume.pdf",
   profilePhoto: "/profile.jpg",
