@@ -90,7 +90,7 @@ const Contact = () => {
                   href={personalInfo.resumeFile}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn--outline-light"
+                  className="btn btn--primary"
                 >
                   Download Resume
                 </a>

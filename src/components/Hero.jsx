@@ -28,7 +28,7 @@ const Hero = () => {
                 href={personalInfo.resumeFile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn--outline-light"
+                className="btn btn--primary"
               >
                 <FaDownload /> Download CV
               </a>

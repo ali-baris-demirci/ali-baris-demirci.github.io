@@ -88,16 +88,22 @@
 .contact__cta-content {
   text-align: center;
   padding: 48px 36px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
 }
 
 .contact__cta-icon {
   font-size: 2.5rem;
-  color: var(--accent);
+  color: white;
   margin-bottom: 20px;
 }
+
+.contact__cta-content p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
 
 .contact__cta-content h3 {
   font-size: 1.4rem;
