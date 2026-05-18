@@ -21,7 +21,7 @@ export const highlights = [
 export const skills = {
   technical: [
     { category: "SQL", items: ["Oracle", "PL/SQL", "PostgreSQL", "T-SQL"] },
-    { category: "Python", items: ["Pandas", "NumPy", "scikit-learn", "ML Foundations"] },
+    { category: "Python", items: ["Pandas", "NumPy", "scikit-learn", "Machine Learning"] },
     { category: "ETL/ELT", items: ["Pipeline Design", "Optimization", "Monitoring", "Orchestration"] },
     { category: "Data Modeling", items: ["Star Schema", "Schema Optimization", "Flat-to-Star Restructuring"] },
     { category: "Data Warehousing", items: ["Implementation", "Query Optimization"] },

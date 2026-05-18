@@ -1,47 +1,88 @@
 import { useState } from 'react'
 import { skills } from '../data/portfolioData'
-import { FaUsers, FaGlobe, FaProjectDiagram, FaChartBar, FaDatabase, FaBrain } from 'react-icons/fa'
+import { FaUsers, FaGlobe, FaProjectDiagram, FaLayerGroup, FaFlask, FaChartPie } from 'react-icons/fa'
 import '../styles/Skills.css'
 
-// ── Domain groupings ──────────────────────────────────────────────
 const DOMAINS = [
   {
-    key: 'analysis',
-    label: 'Data Analysis',
-    icon: <FaChartBar />,
-    description: 'Turning raw data into decisions',
-    technical: ['SQL', 'Statistical Analysis', 'Data Quality'],
-    tools: ['BI & Visualization'],
+    key: 'foundation',
+    label: 'The Foundation',
+    sublabel: 'Engineering & Infrastructure',
+    icon: <FaLayerGroup />,
+    tagline: 'The data layer. Without this, nothing works.',
+    accent: 'sky',
+    columns: [
+      {
+        title: 'Core Skills',
+        items: [
+          { label: 'Data Engineering', detail: 'ETL/ELT Pipelines · dbt · Spark · Kafka · Orchestration' },
+          { label: 'Data Modeling', detail: 'Star & Snowflake Schemas · Optimization · Data Warehousing' },
+          { label: 'SQL Mastery', detail: 'Oracle (PL/SQL) · MSSQL (T-SQL) · PostgreSQL · Snowflake · Azure SQL' },
+        ],
+      },
+      {
+        title: 'Tools & Platforms',
+        items: [
+          { label: 'Platforms', detail: 'Azure Data Factory · Oracle Data Integrator · Acumatica ERP' },
+        ],
+      },
+    ],
   },
   {
-    key: 'engineering',
-    label: 'Data Engineering',
-    icon: <FaDatabase />,
-    description: 'Building the pipes that data flows through',
-    technical: ['ETL/ELT', 'Data Modeling', 'Data Warehousing'],
-    tools: ['Data Engineering', 'Big Data & Streaming', 'ERP', 'Development'],
+    key: 'insight',
+    label: 'The Insight',
+    sublabel: 'Science & Advanced Analytics',
+    icon: <FaFlask />,
+    tagline: 'Turning data into patterns. Patterns into predictions.',
+    accent: 'indigo',
+    columns: [
+      {
+        title: 'Core Skills',
+        items: [
+          { label: 'Programming', detail: 'Python (Pandas, NumPy) · Jupyter · GitHub · VS Code' },
+          { label: 'Machine Learning', detail: 'scikit-learn · Keras · PyTorch · OpenCV · YOLO' },
+          { label: 'Advanced Statistics', detail: 'Feature Engineering · A/B Testing · Exploratory Data Analysis (EDA)' },
+          { label: 'Validation', detail: 'Data Quality Rules · Error Reduction · Accuracy Controls' },
+        ],
+      },
+      {
+        title: 'Tools & Platforms',
+        items: [
+          { label: 'ML Toolchain', detail: 'Jupyter Notebook · GitHub · VS Code · scikit-learn · PyTorch' },
+        ],
+      },
+    ],
   },
   {
-    key: 'science',
-    label: 'Data Science & BI',
-    icon: <FaBrain />,
-    description: 'Models, insights & executive dashboards',
-    technical: ['Python', 'Statistical Analysis'],
-    tools: ['ML & Data Science', 'BI & Visualization'],
+    key: 'impact',
+    label: 'The Impact',
+    sublabel: 'Business Intelligence & Leadership',
+    icon: <FaChartPie />,
+    tagline: 'Where data meets decisions. This is what stakeholders see.',
+    accent: 'teal',
+    columns: [
+      {
+        title: 'Core Skills',
+        items: [
+          { label: 'Visualization', detail: 'Power BI · Tableau · Qlik (Sense / View / NPrinting)' },
+          { label: 'Strategic Delivery', detail: 'Data Storytelling · Executive Presentations · Stakeholder Management' },
+          { label: 'Operational Excellence', detail: 'Agile/Scrum · Requirements Gathering · Data Quality Principles' },
+          { label: 'Leadership', detail: 'Mentoring · Data Culture Advocacy · Cross-functional Collaboration' },
+        ],
+      },
+      {
+        title: 'Tools & Platforms',
+        items: [
+          { label: 'BI Platforms', detail: 'Power BI · Tableau · QlikView · Qlik Sense · NPrinting' },
+        ],
+      },
+    ],
   },
 ]
 
 const Skills = () => {
-  const [active, setActive] = useState('analysis')
-
+  const [active, setActive] = useState('foundation')
   const domain = DOMAINS.find(d => d.key === active)
-
-  const technicalCards = skills.technical.filter(s =>
-    domain.technical.includes(s.category)
-  )
-  const toolCards = skills.tools.filter(s =>
-    domain.tools.includes(s.category)
-  )
 
   return (
     <section className="skills section--alt" id="skills">
@@ -51,71 +92,53 @@ const Skills = () => {
           <p className="section-subtitle">Technologies and tools I work with</p>
         </div>
 
-        {/* ── Tab Bar ── */}
+        {/* Tab Bar */}
         <div className="skills__tabs" role="tablist">
           {DOMAINS.map(d => (
             <button
               key={d.key}
               role="tab"
               aria-selected={active === d.key}
-              className={`skills__tab ${active === d.key ? 'skills__tab--active' : ''}`}
+              className={`skills__tab ${active === d.key ? `skills__tab--active skills__tab--${d.accent}` : ''}`}
               onClick={() => setActive(d.key)}
             >
-              <span className="skills__tab-icon">{d.icon}</span>
-              <span className="skills__tab-label">{d.label}</span>
+              <span className="skills__tab-icon" aria-hidden="true">{d.icon}</span>
+              <span className="skills__tab-body">
+                <span className="skills__tab-label">{d.label}</span>
+                <span className="skills__tab-sub">{d.sublabel}</span>
+              </span>
             </button>
           ))}
         </div>
 
-        {/* ── Domain Panel ── */}
-        <div className="skills__panel" key={active}>
-          <p className="skills__panel-desc">{domain.description}</p>
-
+        {/* Domain Panel */}
+        <div className={`skills__panel skills__panel--${domain.accent}`} key={active}>
+          <p className="skills__panel-tagline">{domain.tagline}</p>
           <div className="skills__panel-columns">
-            {/* Technical */}
-            <div className="skills__column">
-              <h4 className="skills__column-title">Core Skills</h4>
-              <div className="skills__card-stack">
-                {technicalCards.map((skill, i) => (
-                  <div className="skills__card" key={i}>
-                    <span className="skills__card-title">{skill.category}</span>
-                    <div className="skills__tags">
-                      {skill.items.map((item, j) => (
-                        <span className="tag" key={j}>{item}</span>
-                      ))}
+            {domain.columns.map((col, ci) => (
+              <div className="skills__column" key={ci}>
+                <h4 className="skills__column-title">{col.title}</h4>
+                <div className="skills__card-stack">
+                  {col.items.map((item, ii) => (
+                    <div className={`skills__card skills__card--${domain.accent}`} key={ii}>
+                      <span className="skills__card-label">{item.label}</span>
+                      <span className="skills__card-detail">{item.detail}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-
-            {/* Tools */}
-            <div className="skills__column">
-              <h4 className="skills__column-title">Tools & Platforms</h4>
-              <div className="skills__card-stack">
-                {toolCards.map((skill, i) => (
-                  <div className="skills__card" key={i}>
-                    <span className="skills__card-title">{skill.category}</span>
-                    <div className="skills__tags">
-                      {skill.items.map((item, j) => (
-                        <span className="tag" key={j}>{item}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* ── Bottom Row: Soft / Methodologies / Languages ── */}
+        {/* Bottom Row */}
         <div className="skills__bottom-three">
           <div className="skills__group--third">
             <div className="skills__group-header">
-              <FaUsers className="skills__group-icon" />
+              <FaUsers className="skills__group-icon" aria-hidden="true" />
               <h3 className="skills__group-title">Soft Skills</h3>
             </div>
-            <div className="skills__tags skills__tags--wrap">
+            <div className="skills__tags">
               {skills.softSkills.map((s, i) => (
                 <span className="tag" key={i}>{s}</span>
               ))}
@@ -124,10 +147,10 @@ const Skills = () => {
 
           <div className="skills__group--third">
             <div className="skills__group-header">
-              <FaProjectDiagram className="skills__group-icon" />
+              <FaProjectDiagram className="skills__group-icon" aria-hidden="true" />
               <h3 className="skills__group-title">Methodologies</h3>
             </div>
-            <div className="skills__tags skills__tags--wrap">
+            <div className="skills__tags">
               {skills.methodologies.map((m, i) => (
                 <span className="tag" key={i}>{m}</span>
               ))}
@@ -136,7 +159,7 @@ const Skills = () => {
 
           <div className="skills__group--third">
             <div className="skills__group-header">
-              <FaGlobe className="skills__group-icon" />
+              <FaGlobe className="skills__group-icon" aria-hidden="true" />
               <h3 className="skills__group-title">Languages</h3>
             </div>
             <div className="skills__languages">

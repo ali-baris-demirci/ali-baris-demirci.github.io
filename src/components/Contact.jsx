@@ -65,7 +65,7 @@ const Contact = () => {
               <div>
                 <h3 className="contact__card-title">Location</h3>
                 <p className="contact__card-value">{personalInfo.location}</p>
-                <p className="contact__card-sub">Work Permit Holder · Open to Relocation</p>
+                <p className="contact__card-sub">Work Permit Holder in Germany · Open to Relocation</p>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Contact = () => {
               <FaPaperPlane className="contact__cta-icon" />
               <h3>Let's work together</h3>
               <p>
-                Whether you have a question, a project idea, or just want to say hello — 
+                Whether you have a question, a project idea, or just want to say hello -
                 my inbox is always open.
               </p>
               <div className="contact__cta-buttons">
