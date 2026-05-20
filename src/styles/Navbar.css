@@ -15,9 +15,10 @@
 }
 
 .navbar--scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
 }
 
 .navbar__container {
@@ -25,13 +26,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
 }
 
 /* Logo */
 .navbar__logo {
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: white;
   cursor: pointer;
@@ -44,6 +49,7 @@
 
 .navbar__logo-icon {
   font-size: 1.4rem;
+  margin-right: 8px;
   transition: var(--transition);
 }
 
@@ -56,7 +62,7 @@
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navbar__link {
@@ -65,8 +71,9 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: var(--transition);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+  position: relative;
 }
 
 .navbar--scrolled .navbar__link {
@@ -95,7 +102,7 @@
 
 /* Resume Button */
 .btn--sm {
-  padding: 8px 20px;
+  padding: 10px 24px;
   font-size: 0.85rem;
 }
 

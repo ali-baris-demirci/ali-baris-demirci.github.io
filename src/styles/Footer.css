@@ -2,9 +2,10 @@
 /*        FOOTER           */
 /* ===================== */
 .footer {
-  background: var(--primary-darker);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   color: var(--text-light);
-  padding: 40px 24px 24px;
+  padding: 60px 24px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__container {
@@ -16,7 +17,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__logo {

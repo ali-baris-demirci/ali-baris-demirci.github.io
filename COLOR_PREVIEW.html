@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accent Color Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f9fafb;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e293b;
+            font-size: 2.5rem;
+        }
+
+        .color-selector {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .color-btn {
+            padding: 12px 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .color-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-btn.active {
+            border-color: #1e293b;
+            background: #1e293b;
+            color: white;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .preview-card {
+            background: white;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .preview-card h3 {
+            margin-bottom: 16px;
+            color: #1e293b;
+        }
+
+        /* Button Preview */
+        .button-example {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Badge Preview */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            margin-right: 8px;
+        }
+
+        /* Icon Preview */
+        .icon-example {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Gradient Background */
+        .gradient-bg {
+            height: 100px;
+            border-radius: 12px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(29, 155, 240, 0.2) 0%, rgba(13, 148, 136, 0.1) 100%);
+        }
+
+        .comparison-section {
+            background: white;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .comparison-section h2 {
+            margin-bottom: 24px;
+            color: #1e293b;
+            font-size: 1.5rem;
+        }
+
+        .component-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .component-demo {
+            text-align: center;
+        }
+
+        .component-demo label {
+            display: block;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 24px 0;
+        }
+
+        .color-info {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+
+        .color-info p {
+            margin: 8px 0;
+            color: #475569;
+        }
+
+        .color-code {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Accent Color Preview</h1>
+        
+        <div class="color-selector">
+            <button class="color-btn active" onclick="showColor('purple')">Purple #7C3AED</button>
+            <button class="color-btn" onclick="showColor('coral')">Coral #FF6B35</button>
+            <button class="color-btn" onclick="showColor('pink')">Pink #E63946</button>
+            <button class="color-btn" onclick="showColor('cyan')">Cyan #00D9FF</button>
+            <button class="color-btn" onclick="showColor('lime')">Lime #BFFF00</button>
+            <button class="color-btn" onclick="showColor('orange')">Orange #FF9F1C</button>
+        </div>
+
+        <!-- PURPLE PREVIEW -->
+        <div id="purple-preview" class="preview-section">
+            <div class="comparison-section">
+                <h2>Accent Color: Vibrant Purple</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#7C3AED</span> - Modern, tech-forward, premium</p>
+                    <p>✨ Best for: Data/tech professionals | Innovation, intelligence, creativity</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #7C3AED;">Download Resume</button>
+                    <button class="btn" style="background: #6D28D9;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #7C3AED;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #7C3AED;">Featured Work</span>
+                    <span class="badge" style="background: #7C3AED;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #7C3AED;">📊</div>
+                    <div class="icon-container" style="background: #7C3AED;">🎓</div>
+                    <div class="icon-container" style="background: #7C3AED;">✨</div>
+                    <div class="icon-container" style="background: #7C3AED;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); color: white;">
+                    Purple Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #7C3AED; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have a purple left border accent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CORAL PREVIEW -->
+        <div id="coral-preview" class="preview-section" style="display: none;">
+            <div class="comparison-section">
+                <h2>Accent Color: Bright Coral</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#FF6B35</span> - Energetic, approachable, modern</p>
+                    <p>✨ Best for: Creative + analytical blend | Energy, enthusiasm, action</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #FF6B35;">Download Resume</button>
+                    <button class="btn" style="background: #FF5722;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #FF6B35;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #FF6B35;">Featured Work</span>
+                    <span class="badge" style="background: #FF6B35;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #FF6B35;">📊</div>
+                    <div class="icon-container" style="background: #FF6B35;">🎓</div>
+                    <div class="icon-container" style="background: #FF6B35;">✨</div>
+                    <div class="icon-container" style="background: #FF6B35;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #FF6B35 0%, #FF5722 100%); color: white;">
+                    Coral Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #FF6B35; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have a coral left border accent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PINK PREVIEW -->
+        <div id="pink-preview" class="preview-section" style="display: none;">
+            <div class="comparison-section">
+                <h2>Accent Color: Vibrant Pink</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#E63946</span> - Bold, trendy, contemporary</p>
+                    <p>✨ Best for: Standing out, modern portfolios | Bold, confident, creative</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #E63946;">Download Resume</button>
+                    <button class="btn" style="background: #D62828;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #E63946;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #E63946;">Featured Work</span>
+                    <span class="badge" style="background: #E63946;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #E63946;">📊</div>
+                    <div class="icon-container" style="background: #E63946;">🎓</div>
+                    <div class="icon-container" style="background: #E63946;">✨</div>
+                    <div class="icon-container" style="background: #E63946;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #E63946 0%, #D62828 100%); color: white;">
+                    Pink Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #E63946; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have a pink left border accent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CYAN PREVIEW -->
+        <div id="cyan-preview" class="preview-section" style="display: none;">
+            <div class="comparison-section">
+                <h2>Accent Color: Bright Cyan</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#00D9FF</span> - Tech, futuristic, data-driven</p>
+                    <p>✨ Best for: Data professionals, tech companies | Innovation, technology, clarity</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #00D9FF; color: #0f172a;">Download Resume</button>
+                    <button class="btn" style="background: #00B8D4; color: #0f172a;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #00D9FF; color: #0f172a;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #00D9FF; color: #0f172a;">Featured Work</span>
+                    <span class="badge" style="background: #00D9FF; color: #0f172a;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #00D9FF; color: #0f172a;">📊</div>
+                    <div class="icon-container" style="background: #00D9FF; color: #0f172a;">🎓</div>
+                    <div class="icon-container" style="background: #00D9FF; color: #0f172a;">✨</div>
+                    <div class="icon-container" style="background: #00D9FF; color: #0f172a;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #00D9FF 0%, #00B8D4 100%); color: #0f172a;">
+                    Cyan Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #00D9FF; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have a cyan left border accent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIME PREVIEW -->
+        <div id="lime-preview" class="preview-section" style="display: none;">
+            <div class="comparison-section">
+                <h2>Accent Color: Lime Green</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#BFFF00</span> - Modern, energetic, cutting-edge</p>
+                    <p>✨ Best for: Forward-thinking portfolios | Growth, freshness, innovation</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #BFFF00; color: #0f172a;">Download Resume</button>
+                    <button class="btn" style="background: #9AE700; color: #0f172a;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #BFFF00; color: #0f172a;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #BFFF00; color: #0f172a;">Featured Work</span>
+                    <span class="badge" style="background: #BFFF00; color: #0f172a;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #BFFF00; color: #0f172a;">📊</div>
+                    <div class="icon-container" style="background: #BFFF00; color: #0f172a;">🎓</div>
+                    <div class="icon-container" style="background: #BFFF00; color: #0f172a;">✨</div>
+                    <div class="icon-container" style="background: #BFFF00; color: #0f172a;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #BFFF00 0%, #9AE700 100%); color: #0f172a;">
+                    Lime Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #BFFF00; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have a lime left border accent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORANGE PREVIEW -->
+        <div id="orange-preview" class="preview-section" style="display: none;">
+            <div class="comparison-section">
+                <h2>Accent Color: Vibrant Orange</h2>
+                
+                <div class="color-info">
+                    <p><span class="color-code">#FF9F1C</span> - Warm, professional, approachable</p>
+                    <p>✨ Best for: Friendly yet professional | Enthusiasm, energy, success</p>
+                </div>
+
+                <hr>
+
+                <h3>Buttons & CTAs</h3>
+                <div class="button-example">
+                    <button class="btn" style="background: #FF9F1C;">Download Resume</button>
+                    <button class="btn" style="background: #FF8C00;">Hover State</button>
+                </div>
+
+                <h3>Badges (Pro Projects)</h3>
+                <div style="margin: 16px 0;">
+                    <span class="badge" style="background: #FF9F1C;">⭐ Pro Project</span>
+                    <span class="badge" style="background: #FF9F1C;">Featured Work</span>
+                    <span class="badge" style="background: #FF9F1C;">Premium</span>
+                </div>
+
+                <h3>Icon Containers</h3>
+                <div class="icon-example">
+                    <div class="icon-container" style="background: #FF9F1C;">📊</div>
+                    <div class="icon-container" style="background: #FF9F1C;">🎓</div>
+                    <div class="icon-container" style="background: #FF9F1C;">✨</div>
+                    <div class="icon-container" style="background: #FF9F1C;">🏆</div>
+                </div>
+
+                <h3>Gradient Backgrounds</h3>
+                <div class="gradient-bg" style="background: linear-gradient(135deg, #FF9F1C 0%, #FF8C00 100%); color: white;">
+                    Orange Gradient
+                </div>
+
+                <h3>Card Accent</h3>
+                <div style="border-left: 4px solid #FF9F1C; padding-left: 16px; margin: 16px 0;">
+                    <strong>Featured Project</strong>
+                    <p style="color: #475569; margin-top: 8px;">This project would have an orange left border accent</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showColor(color) {
+            // Hide all previews
+            document.querySelectorAll('.preview-section').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show selected preview
+            document.getElementById(color + '-preview').style.display = 'block';
+            
+            // Update button states
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to preview
+            document.getElementById(color + '-preview').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

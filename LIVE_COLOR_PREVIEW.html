@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio - Color Variant Preview</title>
+    <style>
+        :root {
+            --primary: #1D9BF0;
+            --primary-dark: #1a7bc4;
+            --primary-light: #e0f2fe;
+            --primary-lighter: #f0f9ff;
+            
+            --secondary: #0D9488;
+            --secondary-light: #CCFBF1;
+            --secondary-lighter: #F0FDFA;
+            
+            --accent: #D4AF37;
+            --accent-light: #F9F3E6;
+            
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --bg-lighter: #F3F4F6;
+            --bg-dark: #1A202C;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #94A3B8;
+            --text-light: #F1F5F9;
+            
+            --border: #E5E7EB;
+            --border-light: #F3F4F6;
+            
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 16px rgba(29, 155, 240, 0.1);
+            --shadow-lg: 0 16px 32px rgba(29, 155, 240, 0.12);
+            --shadow-xl: 0 24px 48px rgba(29, 155, 240, 0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .color-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            z-index: 9999;
+            max-width: 320px;
+        }
+
+        .color-switcher h3 {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .color-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .color-option {
+            padding: 10px 12px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .color-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .color-option.active {
+            border-color: var(--text-primary);
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 40px 20px;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section h2 {
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .demo-item {
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 8px;
+        }
+
+        .icon-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            background: var(--accent);
+            color: white;
+            font-size: 24px;
+            margin: 8px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin: 12px 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card h3 {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent-light);
+            color: var(--text-primary);
+            border-radius: var(--radius-md);
+            font-size: 0.8rem;
+            margin: 4px;
+            border: 1px solid var(--accent);
+        }
+
+        .gradient-demo {
+            height: 80px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--accent) 0%, rgba(212, 175, 55, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin: 16px 0;
+        }
+
+        .comparison-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 12px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="color-switcher">
+        <h3>Accent Color</h3>
+        <div class="color-options">
+            <button class="color-option active" onclick="setAccent('#FF6B35', 'Coral')">
+                <span class="color-dot" style="background: #FF6B35;"></span> Coral
+            </button>
+            <button class="color-option" onclick="setAccent('#7C3AED', 'Purple')">
+                <span class="color-dot" style="background: #7C3AED;"></span> Purple
+            </button>
+            <button class="color-option" onclick="setAccent('#E63946', 'Pink')">
+                <span class="color-dot" style="background: #E63946;"></span> Pink
+            </button"
+            <button class="color-option" onclick="setAccent('#00D9FF', 'Cyan')">
+                <span class="color-dot" style="background: #00D9FF;"></span> Cyan
+            </button>
+            <button class="color-option" onclick="setAccent('#BFFF00', 'Lime')">
+                <span class="color-dot" style="background: #BFFF00;"></span> Lime
+            </button>
+            <button class="color-option" onclick="setAccent('#FF9F1C', 'Orange')">
+                <span class="color-dot" style="background: #FF9F1C;"></span> Orange
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="banner">
+            <h1>✨ Your Portfolio Preview</h1>
+            <p>Switch accent colors on the right to see live changes</p>
+            <button class="btn" style="background: white; color: var(--primary);">Download Resume</button>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="section">
+            <h2>Primary Call-to-Action Buttons</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">How your main buttons will look with different accent colors</p>
+            <button class="btn">Download Resume</button>
+            <button class="btn">View on GitHub</button>
+            <button class="btn">Get in Touch</button>
+            <p class="comparison-label">Accent Color: <span id="accent-label">Purple</span></p>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="section">
+            <h2>Achievement Badges</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">Certifications, awards, and special designations</p>
+            <div>
+                <span class="badge">⭐ Pro Project</span>
+                <span class="badge">🏆 Featured</span>
+                <span class="badge">✨ Award Winner</span>
+                <span class="badge">🎓 Certified</span>
+            </div>
+        </div>
+
+        <!-- Icons Section -->
+        <div class="section">
+            <h2>Icon Containers</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">Education, skills, and experience icons</p>
+            <div style="text-align: center;">
+                <div class="icon-box">📊</div>
+                <div class="icon-box">📚</div>
+                <div class="icon-box">🏢</div>
+                <div class="icon-box">🎯</div>
+            </div>
+        </div>
+
+        <!-- Project Cards Section -->
+        <div class="section">
+            <h2>Project Cards</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">Your featured projects with accent left border</p>
+            
+            <div class="project-card">
+                <h3>Data Analytics Dashboard</h3>
+                <p>Built an executive dashboard analyzing 2M+ records with real-time insights</p>
+                <div style="margin-top: 12px;">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>ETL Pipeline Optimization</h3>
+                <p>Reduced data processing time by 60% with optimized pipeline architecture</p>
+                <div style="margin-top: 12px;">
+                    <span class="skill-tag">Azure Data Factory</span>
+                    <span class="skill-tag">ETL</span>
+                    <span class="skill-tag">Orchestration</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Data Warehouse Migration</h3>
+                <p>Migrated 500+ reports from legacy system with zero downtime</p>
+                <div style="margin-top: 12px;">
+                    <span class="skill-tag">Snowflake</span>
+                    <span class="skill-tag">dbt</span>
+                    <span class="skill-tag">Migration</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gradient Backgrounds -->
+        <div class="section">
+            <h2>Gradient Accents</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">Gradient backgrounds for special sections</p>
+            <div class="gradient-demo">
+                Special Gradient Section
+            </div>
+        </div>
+
+        <!-- Skill Tags -->
+        <div class="section">
+            <h2>Skill Tags</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 16px;">Skills displayed with accent color border</p>
+            <div>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Azure</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">ETL</span>
+                <span class="skill-tag">Data Modeling</span>
+                <span class="skill-tag">Snowflake</span>
+            </div>
+        </div>
+
+        <!-- Final Section -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);">
+            <h2 style="color: var(--primary);">Ready to See This On Your Site?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 24px;">Once you pick your favorite accent color, I'll apply it to your portfolio!</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                💡 Tip: The accent color appears in buttons, badges, icons, project cards, and special designations
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function setAccent(color, name) {
+            document.documentElement.style.setProperty('--accent', color);
+            
+            // Update light variant
+            const hex = color.replace('#', '');
+            const r = parseInt(hex.substring(0, 2), 16);
+            const g = parseInt(hex.substring(2, 4), 16);
+            const b = parseInt(hex.substring(4, 6), 16);
+            const light = `rgba(${r}, ${g}, ${b}, 0.1)`;
+            document.documentElement.style.setProperty('--accent-light', light);
+            
+            // Update button states
+            document.querySelectorAll('.color-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.color-option').classList.add('active');
+            
+            // Update label
+            document.getElementById('accent-label').textContent = name;
+        }
+
+        // Set initial accent to coral
+        setAccent('#FF6B35', 'Coral');
+    </script>
+</body>
+</html>
