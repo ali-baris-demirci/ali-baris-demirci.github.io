@@ -1,112 +1,65 @@
-import { projects } from '../data/portfolioData'
-import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa'
-import { useState } from 'react'
-import '../styles/Projects.css'
+import { useState } from "react"
+import { projects } from "../data/portfolioData"
 
-const Projects = () => {
-  const [activeTab, setActiveTab] = useState('academic')
+export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const allProjects = [
+    ...projects.professional.map((p) => ({ ...p, type: "PROFESSIONAL" })),
+    ...projects.academic.map((p) => ({ ...p, type: "ACADEMIC" })),
+  ]
+
+  const toggleProject = (index) => {
+    setActiveIndex(activeIndex === index ? -1 : index)
+  }
 
   return (
-    <section className="projects section--alt" id="projects">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Projects</h2>
-          <p className="section-subtitle">Academic research and professional implementations</p>
-        </div>
-
-        {/* Tabs */}
-        <div className="projects__tabs">
-          <button
-            className={`projects__tab ${activeTab === 'academic' ? 'projects__tab--active' : ''}`}
-            onClick={() => setActiveTab('academic')}
-          >
-            🎓 Academic
-          </button>
-          <button
-            className={`projects__tab ${activeTab === 'professional' ? 'projects__tab--active' : ''}`}
-            onClick={() => setActiveTab('professional')}
-          >
-            💼 Professional
-          </button>
-        </div>
-
-        {/* Academic Projects */}
-        {activeTab === 'academic' && (
-          <div className="projects__grid">
-            {projects.academic.map((project, index) => (
-              <div className="projects__card" key={index}>
-                <div className="projects__card-top">
-                  <div className="projects__card-icon">📂</div>
-                  <div className="projects__card-links">
+    <section className="mb-unit-16" id="005_projects">
+      <div className="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+        <h2 className="font-label-mono text-label-mono text-on-surface-variant uppercase">Projects</h2>
+        <span className="font-label-mono text-label-mono text-outline ml-auto">005</span>
+      </div>
+      <div className="grid grid-cols-1 gap-0 border-t border-l border-outline-variant">
+        {allProjects.map((project, index) => (
+          <div key={index} className={`project-row group border-r border-b border-outline-variant bg-white/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer ${activeIndex === index ? "active" : ""}`} onClick={() => toggleProject(index)}>
+            <div className="grid grid-cols-12 items-center p-unit-4">
+              <div className="col-span-1 font-label-mono text-[10px] text-outline">{String(index + 1).padStart(3, "0")}</div>
+              <div className="col-span-5 md:col-span-7">
+                <h5 className="font-headline-md text-body-lg group-hover:text-primary transition-colors">{project.name}</h5>
+              </div>
+              <div className="col-span-4 md:col-span-3 font-label-mono text-[10px] text-on-surface-variant group-hover:text-primary transition-colors">{project.type}</div>
+              <div className="col-span-2 md:col-span-1 text-right">
+                <span className="material-symbols-outlined text-outline group-hover:text-primary expand-arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div className="project-content bg-surface-container-lowest">
+              <div className="p-unit-6 border-t border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-unit-6">
+                <div className="md:col-span-8">
+                  <p className="font-body-sm text-on-surface-variant mb-unit-4">{project.description}</p>
+                  <div className="grid grid-cols-2 gap-unit-4 font-label-mono text-[11px]">
+                    {project.tech && project.tech.length > 0 && (
+                      <div className="border-l-2 border-primary pl-2">
+                        <span className="text-outline uppercase">Tools:</span>
+                        <div className="text-primary">{project.tech.join(", ")}</div>
+                      </div>
+                    )}
                     {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="projects__card-link"
-                        aria-label="View on GitHub"
-                      >
-                        <FaGithub />
-                      </a>
+                      <div className="border-l-2 border-primary pl-2">
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={(e) => e.stopPropagation()}>View Project &rarr;</a>
+                      </div>
                     )}
                   </div>
                 </div>
-                <h3 className="projects__card-title">{project.name}</h3>
-                <p className="projects__card-desc">{project.description}</p>
-                <div className="projects__card-tech">
-                  {project.tech.map((tech, i) => (
-                    <span className="tag" key={i}>{tech}</span>
-                  ))}
+                <div className="md:col-span-4 bg-surface-container-low border border-outline-variant p-2">
+                  <div className="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-outline">description</span>
+                  </div>
                 </div>
-                {!project.link && (
-                  <span className="projects__card-status">
-                    🔜 Coming to GitHub soon
-                  </span>
-                )}
               </div>
-            ))}
-          </div>
-        )}
-
-        {/* Professional Projects */}
-        {activeTab === 'professional' && (
-        <div className="projects__grid">
-            {projects.professional.map((project, index) => (
-            <div className="projects__card projects__card--pro" key={index}>
-                <div className="projects__card-top">
-                <div className="projects__card-icon">🏢</div>
-                <div className="projects__card-links">
-                    {project.link ? (
-                    <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="projects__card-link"
-                        aria-label="View on GitHub"
-                    >
-                        <FaGithub />
-                    </a>
-                    ) : (
-                    <span className="projects__card-badge">
-                        <FaLock /> Internal
-                    </span>
-                    )}
-                </div>
-                </div>
-                <h3 className="projects__card-title">{project.name}</h3>
-                <p className="projects__card-desc">{project.description}</p>
-                <div className="projects__card-tech">
-                {project.tech.map((tech, i) => (
-                    <span className="tag" key={i}>{tech}</span>
-                ))}
-                </div>
             </div>
-            ))}
-        </div>
-        )}
+          </div>
+        ))}
       </div>
     </section>
   )
 }
-
-export default Projects

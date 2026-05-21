@@ -1,180 +1,145 @@
-import { useState } from 'react'
-import { skills } from '../data/portfolioData'
-import { FaUsers, FaGlobe, FaProjectDiagram, FaLayerGroup, FaFlask, FaChartPie } from 'react-icons/fa'
-import '../styles/Skills.css'
+import { useState } from "react"
 
-const DOMAINS = [
-  {
-    key: 'foundation',
-    label: 'The Foundation',
-    sublabel: 'Data Infrastructure',
-    icon: <FaLayerGroup />,
-    tagline: 'Building solid data pipelines and schemas.',
-    accent: 'primary',
-    columns: [
-      {
-        title: 'Core Skills',
-        items: [
-          { label: 'Data Engineering', detail: 'ETL/ELT Pipelines · dbt · Spark · Kafka · Orchestration' },
-          { label: 'Data Modeling', detail: 'Star & Snowflake Schemas · Optimization · Data Warehousing' },
-          { label: 'SQL Mastery', detail: 'Oracle (PL/SQL) · MSSQL (T-SQL) · PostgreSQL · Snowflake · Azure SQL' },
-        ],
-      },
-      {
-        title: 'Tools & Platforms',
-        items: [
-          { label: 'Platforms', detail: 'Azure Data Factory · Oracle Data Integrator · Acumatica ERP' },
-        ],
-      },
-    ],
-  },
-  {
-    key: 'insight',
-    label: 'The Insight',
-    sublabel: 'Analytics & ML',
-    icon: <FaFlask />,
-    tagline: 'Analyzing patterns and building predictions.',
-    accent: 'secondary',
-    columns: [
-      {
-        title: 'Core Skills',
-        items: [
-          { label: 'Programming', detail: 'Python (Pandas, NumPy) · Jupyter · GitHub · VS Code' },
-          { label: 'Machine Learning', detail: 'scikit-learn · Keras · PyTorch · OpenCV · YOLO' },
-          { label: 'Advanced Statistics', detail: 'Feature Engineering · A/B Testing · Data Exploration' },
-          { label: 'Validation', detail: 'Data Quality Rules · Error Reduction · Accuracy Controls' },
-        ],
-      },
-      {
-        title: 'Tools & Platforms',
-        items: [
-          { label: 'ML Toolchain', detail: 'Jupyter Notebook · GitHub · VS Code · scikit-learn · PyTorch' },
-        ],
-      },
-    ],
-  },
-  {
-    key: 'impact',
-    label: 'The Impact',
-    sublabel: 'Business & Leadership',
-    icon: <FaChartPie />,
-    tagline: 'Delivering insights that drive decisions.',
-    accent: 'accent',
-    columns: [
-      {
-        title: 'Core Skills',
-        items: [
-          { label: 'Visualization', detail: 'Power BI · Tableau · Qlik (Sense / View / NPrinting)' },
-          { label: 'Strategic Delivery', detail: 'Data Storytelling · Executive Presentations · Stakeholder Management' },
-          { label: 'Operational Excellence', detail: 'Agile/Scrum · Requirements Gathering · Data Quality Principles' },
-          { label: 'Leadership', detail: 'Mentoring · Data Culture Advocacy · Cross-functional Collaboration' },
-        ],
-      },
-      {
-        title: 'Tools & Platforms',
-        items: [
-          { label: 'BI Platforms', detail: 'Power BI · Tableau · QlikView · Qlik Sense · NPrinting' },
-        ],
-      },
-    ],
-  },
-]
+export default function Skills() {
+  const [activeTab, setActiveTab] = useState("foundation")
 
-const Skills = () => {
-  const [active, setActive] = useState('foundation')
-  const domain = DOMAINS.find(d => d.key === active)
+  const skillData = {
+    foundation: {
+      title: "The Foundation",
+      subtitle: "data engineering",
+      icon: "foundation",
+      code: "CR-01",
+      bg: "/images/the_foundation.png",
+      groups: [
+        {
+          category: "Data Engineering",
+          items: ["ETL/ELT Pipelines", "dbt", "Spark", "Kafka", "Orchestration"],
+        },
+        {
+          category: "Data Modeling",
+          items: ["Star & Snowflake Schemas", "Optimization", "Data Warehousing"],
+        },
+        {
+          category: "SQL Mastery",
+          items: ["Oracle (PL/SQL)", "MSSQL (T-SQL)", "PostgreSQL", "Snowflake", "Azure SQL"],
+        },
+        {
+          category: "Platforms",
+          items: ["Azure Data Factory", "Oracle Data Integrator", "Acumatica (ERP)"],
+        },
+      ],
+    },
+    insight: {
+      title: "The Insight",
+      subtitle: "data science",
+      icon: "query_stats",
+      code: "CR-02",
+      bg: "/images/the_insight.png",
+      groups: [
+        {
+          category: "Programming",
+          items: ["Python (Pandas, Numpy)", "Jupyter", "GitHub", "VS Code"],
+        },
+        {
+          category: "Machine Learning",
+          items: ["scikit-learn", "Keras", "PyTorch", "OpenCV", "YOLO"],
+        },
+        {
+          category: "Advanced Statistics",
+          items: ["Feature Engineering", "A/B Testing", "Exploratory Data Analysis (EDA)"],
+        },
+        {
+          category: "Validation",
+          items: ["Data Quality Rules", "Error Reduction", "Accuracy Controls"],
+        },
+      ],
+    },
+    impact: {
+      title: "The Impact",
+      subtitle: "business intelligence",
+      icon: "vitals",
+      code: "CR-03",
+      bg: "/images/the_impact.png",
+      groups: [
+        {
+          category: "Visualization",
+          items: ["PowerBI", "Tableau", "Qlik (Sense/View/NPrinting)"],
+        },
+        {
+          category: "Strategic Delivery",
+          items: ["Data Storytelling", "Executive Presentations", "Stakeholder Management"],
+        },
+        {
+          category: "Operational Excellence",
+          items: ["Agile/Scrum", "Requirements Gathering", "Data Quality Principles"],
+        },
+        {
+          category: "Leadership",
+          items: ["Mentoring", "Data Culture Advocacy", "Cross-functional Collaboration"],
+        },
+      ],
+    },
+  }
+
+  const categories = ["foundation", "insight", "impact"]
 
   return (
-    <section className="skills section--alt" id="skills">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Skills & Expertise</h2>
-          <p className="section-subtitle">Technologies and tools I work with</p>
-        </div>
+    <section className="mb-unit-16" id="001_skills">
+      <div className="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+        <h2 className="font-label-mono text-label-mono text-on-surface-variant uppercase">Skills</h2>
+        <div className="h-[1px] flex-grow bg-outline-variant opacity-30" style={{backgroundImage: "repeating-linear-gradient(to right, #c1c7ce 0, #c1c7ce 4px, transparent 4px, transparent 8px)"}}></div>
+        <span className="font-label-mono text-label-mono text-outline">001</span>
+      </div>
 
-        {/* Tab Bar */}
-        <div className="skills__tabs" role="tablist">
-          {DOMAINS.map(d => (
-            <button
-              key={d.key}
-              role="tab"
-              aria-selected={active === d.key}
-              className={`skills__tab ${active === d.key ? `skills__tab--active skills__tab--${d.accent}` : ''}`}
-              onClick={() => setActive(d.key)}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter mb-unit-4">
+        {categories.map((id) => {
+          const cat = skillData[id]
+          return (
+            <div
+              key={id}
+              className={`category-card relative border border-outline-variant p-unit-6 hover:border-primary transition-all group cursor-pointer overflow-hidden ${activeTab === id ? "active" : ""}`}
+              onClick={() => setActiveTab(id)}
             >
-              <span className="skills__tab-icon" aria-hidden="true">{d.icon}</span>
-              <span className="skills__tab-body">
-                <span className="skills__tab-label">{d.label}</span>
-                <span className="skills__tab-sub">{d.sublabel}</span>
-              </span>
-            </button>
-          ))}
-        </div>
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-5 grayscale group-hover:grayscale-0 group-hover:opacity-10 transition-all"
+                style={{ backgroundImage: `url(${cat.bg})` }}
+              ></div>
+              <div className="relative z-10">
+                <div className="mb-unit-2 flex items-center justify-between">
+                  <span className="material-symbols-outlined text-primary">{cat.icon}</span>
+                  <span className="font-label-mono text-[10px] text-outline">{cat.code}</span>
+                </div>
+                <h3 className="font-headline-md text-headline-md">{cat.title}</h3>
+                <p className="font-label-mono text-[11px] text-on-surface-variant">{cat.subtitle}</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
 
-        {/* Domain Panel */}
-        <div className={`skills__panel skills__panel--${domain.accent}`} key={active}>
-          <p className="skills__panel-tagline">{domain.tagline}</p>
-          <div className="skills__panel-columns">
-            {domain.columns.map((col, ci) => (
-              <div className="skills__column" key={ci}>
-                <h4 className="skills__column-title">{col.title}</h4>
-                <div className="skills__card-stack">
-                  {col.items.map((item, ii) => (
-                    <div className={`skills__card skills__card--${domain.accent}`} key={ii}>
-                      <span className="skills__card-label">{item.label}</span>
-                      <span className="skills__card-detail">{item.detail}</span>
+      <div className="relative overflow-hidden">
+        {categories.map((id) => {
+          const cat = skillData[id]
+          return (
+            <div key={id} className={`skill-detail-pane ${activeTab === id ? "active" : ""}`} id={`pane-${id}`}>
+              <div className="border border-outline-variant p-unit-6 bg-surface-container-lowest">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-unit-6">
+                  {cat.groups.map((group) => (
+                    <div key={group.category}>
+                      <h4 className="font-label-mono text-[11px] text-primary uppercase mb-unit-2 tracking-wider">{group.category}</h4>
+                      <ul className="space-y-1">
+                        {group.items.map((item, i) => (
+                          <li key={i} className="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors inline-block mr-1 mb-1">{item}</li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Row */}
-        <div className="skills__bottom-three">
-          <div className="skills__group--third">
-            <div className="skills__group-header">
-              <FaUsers className="skills__group-icon" aria-hidden="true" />
-              <h3 className="skills__group-title">Soft Skills</h3>
             </div>
-            <div className="skills__tags">
-              {skills.softSkills.map((s, i) => (
-                <span className="tag" key={i}>{s}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="skills__group--third">
-            <div className="skills__group-header">
-              <FaProjectDiagram className="skills__group-icon" aria-hidden="true" />
-              <h3 className="skills__group-title">Methodologies</h3>
-            </div>
-            <div className="skills__tags">
-              {skills.methodologies.map((m, i) => (
-                <span className="tag" key={i}>{m}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="skills__group--third">
-            <div className="skills__group-header">
-              <FaGlobe className="skills__group-icon" aria-hidden="true" />
-              <h3 className="skills__group-title">Languages</h3>
-            </div>
-            <div className="skills__languages">
-              {skills.languages.map((lang, i) => (
-                <div className="skills__language" key={i}>
-                  <span className="skills__language-name">{lang.language}</span>
-                  <span className="skills__language-level">{lang.level}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          )
+        })}
       </div>
     </section>
   )
 }
-
-export default Skills

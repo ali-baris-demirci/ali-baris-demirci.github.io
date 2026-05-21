@@ -1,83 +1,23 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-scroll'
-import { navLinks, personalInfo } from '../data/portfolioData'
-import { FaBars, FaTimes, FaHourglassStart } from 'react-icons/fa'
-import '../styles/Navbar.css'
+import { personalInfo } from "../data/portfolioData"
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const toggleMenu = () => setMenuOpen(!menuOpen)
-  const closeMenu = () => setMenuOpen(false)
-
+export default function Navbar() {
   return (
-    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-      <div className="navbar__container container">
-        <Link
-          to="hero"
-          smooth={true}
-          duration={500}
-          className="navbar__logo"
-          onClick={closeMenu}
-          aria-label="Back to top"
-        >
-          <FaHourglassStart className="navbar__logo-icon" />
-        </Link>
-
-        <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-          {navLinks.map((link) => (
-            <li key={link.to}>
-              <Link
-                to={link.to}
-                smooth={true}
-                duration={500}
-                offset={-70}
-                spy={true}
-                activeClass="navbar__link--active"
-                className="navbar__link"
-                onClick={closeMenu}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li className="navbar__resume-mobile">
-            <a
-              href={personalInfo.resumeFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--primary btn--sm"
-              onClick={closeMenu}
-            >
-              Resume
-            </a>
-          </li>
-        </ul>
-
-        <a
-          href={personalInfo.resumeFile}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn--primary btn--sm navbar__resume-desktop"
-        >
-          Resume
+    <nav className="w-full top-0 sticky bg-surface border-b border-outline-variant z-50">
+      <div className="flex justify-between items-center h-16 px-grid-margin max-w-[1440px] mx-auto">
+        <a href="#top" className="font-label-mono text-label-mono font-bold tracking-tighter text-primary">
+          <span className="material-symbols-outlined animate-hourglass">hourglass_empty</span>
         </a>
-
-        <button className="navbar__toggle" onClick={toggleMenu} aria-label="Toggle menu">
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        <div className="flex items-center gap-unit-6">
+          <a href="#001_skills" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Skills</a>
+          <a href="#002_experiences" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Experiences</a>
+          <a href="#003_education" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Education</a>
+          <a href="#005_projects" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Projects</a>
+          <a href="#006_social" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Contact</a>
+        </div>
+        <div className="flex items-center">
+          <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer" className="font-label-mono text-label-mono border border-outline px-unit-4 py-unit-2 hover:bg-surface-container-low transition-all active:scale-95 uppercase inline-flex items-center">RESUME</a>
+        </div>
       </div>
     </nav>
   )
 }
-
-export default Navbar

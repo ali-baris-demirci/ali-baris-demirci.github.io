@@ -1,0 +1,13 @@
+the tabline should say "Ali Baris Demirci"
+The headline should say "Ali Barış Demirci - Data Analyst"
+Text below ıt should be wider and both sides justified
+lose " & EXPERTISE"
+rework the skills segment fitting to this:
+1. The Foundation	;	2. The Insight	;	3. The Impact
+Engineering & Infrastructure	;	Science & Advanced Analytics	;	Business Intelligence & Leadership
+Data Engineering: ETL/ELT Pipelines, dbt, Spark, Kafka, Orchestration.	;	Programming: Python (Pandas, Numpy), Jupyter, GitHub, VS Code.	;	Visualization: PowerBI, Tableau, Qlik (Sense/View/NPrinting).
+Data Modeling: Star & Snowflake Schemas, Optimization, Data Warehousing.	;	Machine Learning: scikit-learn, Keras, PyTorch, OpenCV, YOLO.	;	Strategic Delivery: Data Storytelling, Executive Presentations, Stakeholder Management.
+SQL Mastery: Oracle (PL/SQL), MSSQL (T-SQL), PostgreSQL, Snowflake, Azure SQL.	;	Advanced Statistics: Feature Engineering, A/B Testing, Exploratory Data Analysis (EDA).	;	Operational Excellence: Agile/Scrum, Requirements Gathering, Data Quality Principles.
+Platforms: Azure Data Factory, Oracle Data Integrator, Acumatica (ERP).	;	Validation: Data Quality Rules, Error Reduction, Accuracy Controls.	;	Leadership: Mentoring, Data Culture Advocacy, Cross-functional Collaboration.
+use the three png files as background images for the selectables with some opacity
+change "technical manual" to "download resume"

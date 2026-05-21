@@ -1,106 +1,54 @@
-import { personalInfo } from '../data/portfolioData'
-import {
-  FaEnvelope, FaLinkedin, FaGithub,
-  FaMapMarkerAlt, FaPaperPlane
-} from 'react-icons/fa'
-import '../styles/Contact.css'
+import { personalInfo } from "../data/portfolioData"
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa"
 
-const Contact = () => {
+export default function Contact() {
   return (
-    <section className="contact section--dark" id="contact">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            I'm open to new opportunities and collaborations. Feel free to reach out!
-          </p>
-        </div>
-
-        <div className="contact__content">
-          {/* Contact Cards */}
-          <div className="contact__cards">
-            <a href={`mailto:${personalInfo.email}`} className="contact__card">
-              <div className="contact__card-icon">
-                <FaEnvelope />
-              </div>
-              <div>
-                <h3 className="contact__card-title">Email</h3>
-                <p className="contact__card-value">{personalInfo.email}</p>
-              </div>
-            </a>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact__card"
-            >
-              <div className="contact__card-icon">
-                <FaLinkedin />
-              </div>
-              <div>
-                <h3 className="contact__card-title">LinkedIn</h3>
-                <p className="contact__card-value">ali-baris-demirci</p>
-              </div>
-            </a>
-
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact__card"
-            >
-              <div className="contact__card-icon">
-                <FaGithub />
-              </div>
-              <div>
-                <h3 className="contact__card-title">GitHub</h3>
-                <p className="contact__card-value">ali-baris-demirci</p>
-              </div>
-            </a>
-
-            <div className="contact__card contact__card--location">
-              <div className="contact__card-icon">
-                <FaMapMarkerAlt />
-              </div>
-              <div>
-                <h3 className="contact__card-title">Location</h3>
-                <p className="contact__card-value">{personalInfo.location}</p>
-                <p className="contact__card-sub">Work Permit Holder in Germany</p>
-              </div>
-            </div>
+    <section className="mb-unit-16 max-w-[1440px] mx-auto px-grid-margin" id="006_social">
+      <div className="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+        <h2 className="font-label-mono text-label-mono text-on-surface-variant uppercase">CONTACT</h2>
+        <span className="font-label-mono text-label-mono text-outline ml-auto">006</span>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter mb-unit-4">
+        <a className="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
+          <div>
+            <span className="font-label-mono text-[10px] text-outline block mb-1">PROFESSIONAL HUB</span>
+            <h3 className="font-headline-md text-headline-md">LinkedIn</h3>
           </div>
-
-          {/* CTA */}
-          <div className="contact__cta">
-            <div className="contact__cta-content">
-              <FaPaperPlane className="contact__cta-icon" />
-              <h3>Let's work together</h3>
-              <p>
-                Whether you have a question, a project idea, or just want to say hello -
-                my inbox is always open.
-              </p>
-              <div className="contact__cta-buttons">
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="btn btn--primary"
-                >
-                  <FaEnvelope /> Send an Email
-                </a>
-                <a
-                  href={personalInfo.resumeFile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary"
-                >
-                  Download Resume
-                </a>
-              </div>
-            </div>
+          <div className="flex justify-between items-end">
+            <FaLinkedin className="text-primary text-3xl" />
+            <span className="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
           </div>
+        </a>
+        <a className="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href={personalInfo.github} target="_blank" rel="noopener noreferrer">
+          <div>
+            <span className="font-label-mono text-[10px] text-outline block mb-1">SOURCE CONTROL</span>
+            <h3 className="font-headline-md text-headline-md">GitHub</h3>
+          </div>
+          <div className="flex justify-between items-end">
+            <FaGithub className="text-primary text-3xl" />
+            <span className="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+        <a className="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href={`mailto:${personalInfo.email}`}>
+          <div>
+            <span className="font-label-mono text-[10px] text-outline block mb-1">DIRECT COMMUNICATION</span>
+            <h3 className="font-headline-md text-headline-md">Email</h3>
+          </div>
+          <div className="flex justify-between items-end">
+            <FaEnvelope className="text-primary text-3xl" />
+            <span className="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+      <div className="mt-unit-8 flex items-center justify-center border border-outline-variant border-dashed p-unit-4 bg-surface-container-low">
+        <div className="flex items-center gap-3">
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: "#4caf50" }}></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 animate-pulse" style={{ backgroundColor: "#4caf50" }}></span>
+          </span>
+          <span className="font-label-mono text-label-mono text-primary">Status: Active / Open for Collaboration</span>
         </div>
       </div>
     </section>
   )
 }
-
-export default Contact

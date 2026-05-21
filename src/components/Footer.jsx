@@ -1,56 +1,31 @@
-import { personalInfo } from '../data/portfolioData'
-import { FaGithub, FaLinkedin, FaEnvelope, FaHourglassStart } from 'react-icons/fa'
-import '../styles/Footer.css'
+import { personalInfo } from "../data/portfolioData"
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear()
+export default function Footer() {
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="footer">
-      <div className="footer__container container">
-        <div className="footer__top">
-          <div className="footer__brand">
-            <span className="footer__logo">
-              <FaHourglassStart className="footer__logo-icon" />
-            </span>
-            <p className="footer__tagline">
-              Turning data into decisions, one dashboard at a time.
-            </p>
+    <footer className="w-full bg-surface-container-low border-t border-outline-variant">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="flex flex-row justify-between items-center py-unit-8 px-grid-margin border-b border-outline-variant border-dashed">
+          <div className="font-label-mono text-label-mono font-bold tracking-tighter text-primary">
+            <span className="material-symbols-outlined animate-hourglass">hourglass_empty</span>
           </div>
-
-          <div className="footer__socials">
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <FaGithub />
-            </a>
-            <a href={`mailto:${personalInfo.email}`} aria-label="Email">
-              <FaEnvelope />
-            </a>
+          <div className="flex gap-unit-6">
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#top">Home</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#005_projects">Projects</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">Download Resume</a>
           </div>
         </div>
-
-        <div className="footer__divider" />
-
-        <div className="footer__bottom">
-          <p className="footer__copyright">
-            © {currentYear} Ali Baris Demirci. All rights reserved.
-          </p>
+        <div className="flex flex-row justify-between items-center py-unit-6 px-grid-margin">
+          <div className="font-label-mono text-[10px] text-outline flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+            &copy; {year} SYSTEM_ARCH_v4.0.1 // STATUS: OPTIMAL
+          </div>
+          <div className="flex gap-unit-4 items-center">
+            <span className="text-[10px] font-label-mono text-outline uppercase">Latency: 14ms</span>
+          </div>
         </div>
       </div>
     </footer>
   )
 }
-
-export default Footer

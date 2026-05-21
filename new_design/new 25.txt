@@ -1,0 +1,593 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SYS.ARCH // ALI BARIŞ DEMİRCİ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            background-color: #fcf9f8; /* background from theme */
+            background-image: 
+                linear-gradient(to right, rgba(114, 120, 126, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(114, 120, 126, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .blueprint-dot {
+            background-image: radial-gradient(#72787e 0.5px, transparent 0.5px);
+            background-size: 10px 10px;
+        }
+        .architect-note {
+            font-style: italic;
+            position: relative;
+        }
+        .architect-note::before {
+            content: "// ";
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Hourglass Flip Animation */
+        @keyframes hourglass-flip {
+            0% { transform: rotate(0deg); }
+            45% { transform: rotate(0deg); }
+            55% { transform: rotate(180deg); }
+            100% { transform: rotate(180deg); }
+        }
+        .animate-hourglass {
+            display: inline-block;
+            animation: hourglass-flip 6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+        }
+
+        /* Expandable Project Section Styles */
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-row.active .project-content {
+            max-height: 500px;
+        }
+        .project-row.active .expand-arrow {
+            transform: rotate(90deg);
+        }
+        .expand-arrow {
+            transition: transform 0.3s ease;
+        }
+        .project-row:hover .expand-arrow {
+            transform: translateX(8px);
+        }
+        .project-row.active:hover .expand-arrow {
+            transform: rotate(90deg) translateY(-8px);
+        }
+
+        /* Skills Tab Animation */
+        .skill-detail-pane {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .skill-detail-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .category-card.active {
+            border-color: #084364;
+            background-color: #f0eded;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#eae7e7",
+                        "primary-fixed": "#cbe6ff",
+                        "on-primary-fixed-variant": "#154b6c",
+                        "on-tertiary-fixed": "#2a1800",
+                        "primary-container": "#2a5b7d",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#fcf9f8",
+                        "primary-fixed-dim": "#9dccf3",
+                        "tertiary-container": "#754f14",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001e30",
+                        "tertiary": "#5a3800",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#9dccf3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container": "#f0eded",
+                        "on-primary-container": "#a4d2f9",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed-variant": "#633f03",
+                        "tertiary-fixed-dim": "#f2bd78",
+                        "surface-variant": "#e5e2e1",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c1c7ce",
+                        "primary": "#084364",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#72787e",
+                        "surface-bright": "#fcf9f8",
+                        "on-surface-variant": "#41474e",
+                        "on-background": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#336385",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed": "#ffddb5",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#54647a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#f8c37e",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-4": "16px",
+                        "unit-2": "8px",
+                        "unit-6": "24px",
+                        "grid-gutter": "24px",
+                        "grid-margin": "32px",
+                        "unit-8": "32px",
+                        "unit-16": "64px",
+                        "unit-12": "48px",
+                        "unit-1": "4px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "metric-lg": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "metric-lg": ["20px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed" id="top">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky bg-surface border-b border-outline-variant z-50">
+<div class="flex justify-between items-center h-16 px-grid-margin max-w-full mx-auto">
+<div class="font-label-mono text-label-mono font-bold tracking-tighter text-primary">
+<span class="material-symbols-outlined animate-hourglass">hourglass_empty</span>
+</div>
+<div class="flex items-center gap-unit-6"><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#001_skills">Skills</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#002_experiences">Experiences</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#003_education">Education</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#005_projects">Projects</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#006_social">Contact</a></div>
+<div class="flex items-center">
+<button class="font-label-mono text-label-mono border border-outline px-unit-4 py-unit-2 hover:bg-surface-container-low transition-all active:scale-95 uppercase">
+                RESUME</button>
+</div>
+</div>
+</nav>
+<main class="max-w-[1440px] mx-auto px-grid-margin py-unit-12">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter mb-unit-16 items-center">
+<div class="md:col-span-8">
+<div class="flex items-center gap-2 mb-unit-4">
+<div class="w-2 h-2 bg-primary"></div>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary leading-none mb-unit-6 pl-4">ALI BARIS DEMIRCI - DATA ANALYST</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl border-l-2 border-outline-variant pl-unit-6 py-unit-2">
+                Systems architect specializing in high-density infrastructure design and minimalist data engineering workflows. Aligning structural integrity with technical performance.
+            </p>
+</div>
+<div class="flex md:col-span-4 justify-center">
+<div class="relative group max-w-[300px]">
+<!-- High precision frame -->
+<div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary"></div>
+<div class="p-2 border border-outline-variant bg-white">
+<img alt="Ali Barıœ Demirci" class="w-full grayscale hover:grayscale-0 transition-all duration-500 block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMYabdhHl0Dvn-NZiOv2vz9D_IXE-MZMz5-k8SsQcKXa-9q4HJGFYFgnXzXy_grEIYewxkco-Lfnz6gFijypIddiMXtuBpierz1Tn91OSn9HUx_IaVETT1q6XK1ydd78IIy4tzmi2Euw1nkNvC4zatS-M0VivO3sI_Vb912vYtkJvG7Fy26LAA27nXeU9q6uB3Ki7lsKM5FYThMK2U7sqtjfHWQeJV1TigohOkTtINhPqR1w-Ya846d1_BtJn1fZcfef7oIGzhA0EK">
+</div>
+</div>
+</div>
+</section>
+<!-- [ 01_SKILLS_AND_EXPERTISE ] -->
+<section class="mb-unit-16" id="001_skills">
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">Skills &amp; Expertise</h2>
+<div class="h-[1px] flex-grow bg-outline-variant dashed opacity-30"></div>
+<span class="font-label-mono text-label-mono text-outline">001</span>
+</div>
+<!-- Skill Categories -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter mb-unit-4">
+<!-- The Foundation -->
+<div class="category-card active relative border border-outline-variant p-unit-6 hover:border-primary transition-all group cursor-pointer" onclick="switchSkillTab('foundation')">
+<div class="absolute inset-0 bg-cover bg-center opacity-5 grayscale group-hover:grayscale-0 transition-all" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/ADBb0ujEUSeR5Fx5TbtK-Ec0rhebFd--b7P2ASFkYbttPu6UyXcIg5Kcdsnq8sUF8TOG4kX6dMa1WllSkid9X4QnSh8NB8bp7DsxiatXM6BuaKKprD1MSF_B5gwUTnmqEOOOTeWO_nnXWehm57U4ds49BveIuaVAV2qU_W9lnD8gEuw33pL0vaIamRLsIaoADAODXl2px7YPs0A_q4v7igWSuqBqAe9gea6IPEJONbWKe7I_v_MhiCggbMlIuAc&quot;);"></div>
+<div class="relative z-10">
+<div class="mb-unit-2 flex items-center justify-between">
+<span class="material-symbols-outlined text-primary">foundation</span>
+<span class="font-label-mono text-[10px] text-outline">CR-01</span>
+</div>
+<h3 class="font-headline-md text-headline-md">The Foundation</h3>
+<p class="font-label-mono text-[11px] text-on-surface-variant uppercase">Data Infrastructure</p>
+</div>
+</div>
+<!-- The Insight -->
+<div class="category-card relative border border-outline-variant p-unit-6 hover:border-primary transition-all group cursor-pointer" onclick="switchSkillTab('insight')">
+<div class="absolute inset-0 bg-cover bg-center opacity-5 grayscale group-hover:grayscale-0 transition-all" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/ADBb0ugbXOWqt7ErsNWR2xDMCs4I74ltb4EUNe0wlgyYchHYE8qHONY0LQQlkwS9i9CLOO7vt470r0mBD3_AcNMMuKHhyy2nVXzMedrCgDZDl2-yJKFq15uqlCeVOJZYpDe-T381_BOL9Cx4dxPwr4KJJE6JyNrX2VMK_g1LiGzHcbrTRaYwbskPz3-g-2lMryC-GJtP5MhmLhFopI3derHS6mvmbeRHqRvZHKk3uZ2Q1u4uo4_C4-z0hUbW-H9W&quot;);"></div>
+<div class="relative z-10">
+<div class="mb-unit-2 flex items-center justify-between">
+<span class="material-symbols-outlined text-primary">query_stats</span>
+<span class="font-label-mono text-[10px] text-outline">CR-02</span>
+</div>
+<h3 class="font-headline-md text-headline-md">The Insight</h3>
+<p class="font-label-mono text-[11px] text-on-surface-variant uppercase">Analytics &amp; ML</p>
+</div>
+</div>
+<!-- The Impact -->
+<div class="category-card relative border border-outline-variant p-unit-6 hover:border-primary transition-all group cursor-pointer" onclick="switchSkillTab('impact')">
+<div class="absolute inset-0 bg-cover bg-center opacity-5 grayscale group-hover:grayscale-0 transition-all" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/ADBb0ujwl-nweGppDerHqswHezhpMN2xCRWp4qEMfWyutkgjL2CLet4-3O2xp-28zkvtGYJ6uaZGuzdWyQwHfOY2Z89uCBxE9lL90IDf4oyIiEx2CdqAiLlR9v6KwFeE0StMmH27bV982CjPXbXxz2dHQgKiUFmgxSiQlRVdI21zUeoXf0O1qZqKQmiBVMs9GJLhdC9ROxBHdPLPsFPkPCkWyHpE_eTjOvvlpsZoNM-OxYCZgEUNhR-_q0GqEayH&quot;);"></div>
+<div class="relative z-10">
+<div class="mb-unit-2 flex items-center justify-between">
+<span class="material-symbols-outlined text-primary">vitals</span>
+<span class="font-label-mono text-[10px] text-outline">CR-03</span>
+</div>
+<h3 class="font-headline-md text-headline-md">The Impact</h3>
+<p class="font-label-mono text-[11px] text-on-surface-variant uppercase">Business &amp; Leadership</p>
+</div>
+</div>
+</div>
+<!-- Skill Details Panes -->
+<div class="relative overflow-hidden"><div class="skill-detail-pane active" id="pane-foundation"></div><div class="skill-detail-pane" id="pane-insight"></div><div class="skill-detail-pane" id="pane-impact"></div></div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 mb-unit-16 md:gap-x-12">
+<!-- [ 02_VERSION_HISTORY ] -->
+<section id="002_experiences">
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">Experiences</h2>
+<span class="font-label-mono text-label-mono text-outline ml-auto">002</span>
+</div>
+<div class="space-y-unit-8 relative">
+<div class="relative pl-unit-8 border-l border-outline-variant pb-unit-8 group">
+<div class="absolute top-0 -left-[5px] w-2 h-2 bg-primary"></div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-md text-[20px] leading-tight">Senior Systems Architect</h4>
+<span class="font-label-mono text-label-mono text-outline">2021 — PRESENT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-4">Leading enterprise-wide data infrastructure transformations with a focus on high-availability and security.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">KUBERNETES</span>
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">TERRAFORM</span>
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">RUST</span>
+</div>
+</div>
+<div class="relative pl-unit-8 border-l border-outline-variant pb-unit-8">
+<div class="absolute top-0 -left-[5px] w-2 h-2 bg-outline"></div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-md text-[20px] leading-tight">Data Engineering Lead</h4>
+<span class="font-label-mono text-label-mono text-outline">2018 — 2021</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-unit-4">Optimized ETL pipelines for multi-petabyte datasets, reducing processing latency by 45%.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">APACHE_SPARK</span>
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">PYTHON</span>
+<span class="px-2 py-0.5 border border-outline-variant font-label-mono text-[10px] hover:border-primary transition-colors">AWS</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/30">
+
+</div>
+</div>
+</section>
+<!-- [ 03_CAPABILITY_MATRIX ] -->
+<section>
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2" id="003_education">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">Education</h2>
+<span class="font-label-mono text-label-mono text-outline ml-auto">003</span>
+</div>
+<div class="space-y-unit-8 relative">
+<div class="relative pl-unit-8 border-l border-outline-variant pb-unit-8">
+<div class="absolute top-0 -left-[5px] w-2 h-2 bg-primary"></div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-md text-[20px] leading-tight">Master of Science in Data Science</h4>
+<span class="font-label-mono text-label-mono text-outline">2018 — 2020</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Focus on Distributed Systems and Large-scale Architecture.</p>
+</div>
+<div class="relative pl-unit-8 border-l border-outline-variant pb-unit-8">
+<div class="absolute top-0 -left-[5px] w-2 h-2 bg-outline"></div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-headline-md text-[20px] leading-tight">Bachelor of Engineering in Computer Science</h4>
+<span class="font-label-mono text-label-mono text-outline">2014 — 2018</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Major in core computer science principles and software engineering.</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/30">
+
+</div>
+<div class="mt-unit-12" id="004_beyond_work">
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">Beyond Work</h2>
+<span class="font-label-mono text-label-mono text-outline ml-auto">004</span>
+</div>
+<div class="space-y-4">
+<div class="relative pl-unit-8 border-l border-outline-variant"><div class="absolute top-0 -left-[5px] w-2 h-2 bg-outline"></div><h4 class="font-headline-md text-[18px] leading-tight">Digital Photography</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Capturing architectural symmetry and urban decay.</p></div>
+<div class="relative pl-unit-8 border-l border-outline-variant"><div class="absolute top-0 -left-[5px] w-2 h-2 bg-outline"></div><h4 class="font-headline-md text-[18px] leading-tight">Urban Exploration</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Documenting hidden industrial structures.</p></div>
+<div class="relative pl-unit-8 border-l border-outline-variant"><div class="absolute top-0 -left-[5px] w-2 h-2 bg-outline"></div><h4 class="font-headline-md text-[18px] leading-tight">Procedural Art</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Generating visual systems from mathematical constraints.</p></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- [ 04_DIRECTORY ] -->
+<section class="mb-unit-16" id="005_projects">
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">Projects</h2>
+<span class="font-label-mono text-label-mono text-outline ml-auto">005</span>
+</div>
+<div class="grid grid-cols-1 gap-0 border-t border-l border-outline-variant">
+<!-- Project Row 1 -->
+<div class="project-row group border-r border-b border-outline-variant bg-white/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer active" onclick="toggleProject(this)">
+<div class="grid grid-cols-12 items-center p-unit-4">
+<div class="col-span-1 font-label-mono text-[10px] text-outline">001</div>
+<div class="col-span-5 md:col-span-7">
+<h5 class="font-headline-md text-body-lg group-hover:text-primary transition-colors">Neural Flux Visualizer</h5>
+</div>
+<div class="col-span-4 md:col-span-3 font-label-mono text-[10px] text-on-surface-variant group-hover:text-primary transition-colors">ENGINEERING_DATA_VIZ</div>
+<div class="col-span-2 md:col-span-1 text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary expand-arrow">arrow_forward</span>
+</div>
+</div>
+<div class="project-content bg-surface-container-lowest">
+<div class="p-unit-6 border-t border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-unit-6">
+<div class="md:col-span-8">
+<p class="font-body-sm text-on-surface-variant mb-unit-4">Real-time visualization engine for complex neural network activations, utilizing high-performance WebGL shaders for low-latency rendering of data throughput.</p>
+<div class="grid grid-cols-2 gap-unit-4 font-label-mono text-[11px]">
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Role:</span>
+<div class="text-primary">Lead Data Architect</div>
+</div>
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Tools:</span>
+<div class="text-primary">Rust, WebGL, D3.js</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-2">
+<div class="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">monitoring</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Row 2 -->
+<div class="project-row group border-r border-b border-outline-variant bg-white/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer" onclick="toggleProject(this)">
+<div class="grid grid-cols-12 items-center p-unit-4">
+<div class="col-span-1 font-label-mono text-[10px] text-outline">002</div>
+<div class="col-span-5 md:col-span-7">
+<h5 class="font-headline-md text-body-lg group-hover:text-primary transition-colors">Prism Protocol v2</h5>
+</div>
+<div class="col-span-4 md:col-span-3 font-label-mono text-[10px] text-on-surface-variant group-hover:text-primary transition-colors">DISTRIBUTED_AUTH</div>
+<div class="col-span-2 md:col-span-1 text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary expand-arrow">arrow_forward</span>
+</div>
+</div>
+<div class="project-content bg-surface-container-lowest">
+<div class="p-unit-6 border-t border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-unit-6">
+<div class="md:col-span-8">
+<p class="font-body-sm text-on-surface-variant mb-unit-4">Implementation of a zero-trust distributed authentication protocol for high-security infrastructure environments, ensuring immutable identity verification across nodes.</p>
+<div class="grid grid-cols-2 gap-unit-4 font-label-mono text-[11px]">
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Role:</span>
+<div class="text-primary">Security Engineer</div>
+</div>
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Tools:</span>
+<div class="text-primary">Go, gRPC, Vault</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-2">
+<div class="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">encrypted</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Row 3 -->
+<div class="project-row group border-r border-b border-outline-variant bg-white/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer" onclick="toggleProject(this)">
+<div class="grid grid-cols-12 items-center p-unit-4">
+<div class="col-span-1 font-label-mono text-[10px] text-outline">003</div>
+<div class="col-span-5 md:col-span-7">
+<h5 class="font-headline-md text-body-lg group-hover:text-primary transition-colors">Void Storage Engine</h5>
+</div>
+<div class="col-span-4 md:col-span-3 font-label-mono text-[10px] text-on-surface-variant group-hover:text-primary transition-colors">STORAGE_INFRA</div>
+<div class="col-span-2 md:col-span-1 text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary expand-arrow">arrow_forward</span>
+</div>
+</div>
+<div class="project-content bg-surface-container-lowest">
+<div class="p-unit-6 border-t border-outline-variant grid grid-cols-1 md:grid-cols-12 gap-unit-6">
+<div class="md:col-span-8">
+<p class="font-body-sm text-on-surface-variant mb-unit-4">A custom-built file storage system optimized for archival-grade durability and cold-storage efficiency, utilizing advanced erasure coding algorithms.</p>
+<div class="grid grid-cols-2 gap-unit-4 font-label-mono text-[11px]">
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Role:</span>
+<div class="text-primary">Backend Developer</div>
+</div>
+<div class="border-l-2 border-primary pl-2">
+<span class="text-outline uppercase">Tools:</span>
+<div class="text-primary">C++, S3 API, Linux</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-low border border-outline-variant p-2">
+<div class="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">database</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<section class="mb-unit-16 max-w-[1440px] mx-auto px-grid-margin" id="006_social">
+<div class="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase">CONTACT</h2>
+<span class="font-label-mono text-label-mono text-outline ml-auto">006</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter mb-unit-4">
+<a class="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href="#">
+<div>
+
+<h3 class="font-headline-md text-headline-md">Professional Hub</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="material-symbols-outlined text-primary text-3xl">person_add</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</a>
+<a class="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href="#">
+<div>
+<span class="font-label-mono text-[10px] text-outline block mb-1">SRV_LINK // GITHUB</span>
+<h3 class="font-headline-md text-headline-md">Source Control</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="material-symbols-outlined text-primary text-3xl">code</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</a>
+<a class="border border-outline-variant p-unit-6 bg-white hover:border-primary transition-all group flex flex-col justify-between h-40" href="#">
+<div>
+<span class="font-label-mono text-[10px] text-outline block mb-1">SRV_LINK // EMAIL</span>
+<h3 class="font-headline-md text-headline-md">Direct Comms</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</a>
+</div>
+<div class="mt-unit-8 flex items-center justify-center border border-outline-variant border-dashed p-unit-4 bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" style="background-color: #4caf50;"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-success animate-pulse" style="background-color: #4caf50;"></span>
+</span>
+<span class="font-label-mono text-label-mono text-primary">Status: Active / Open for Collaboration</span>
+</div>
+</div>
+</section>
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-outline-variant dashed">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-row justify-between items-center py-unit-8 px-grid-margin border-b border-outline-variant border-dashed">
+<div class="font-label-mono text-label-mono font-bold tracking-tighter text-primary">
+<span class="material-symbols-outlined animate-hourglass">hourglass_empty</span>
+</div>
+<div class="flex gap-unit-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#top">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#005_projects">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Technical Manual</a>
+</div>
+</div>
+<div class="flex flex-row justify-between items-center py-unit-6 px-grid-margin">
+<div class="font-label-mono text-[10px] text-outline flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+      © 2024 SYSTEM_ARCH_v4.0.1 // STATUS: OPTIMAL
+    </div>
+<div class="flex gap-unit-4 items-center">
+<span class="text-[10px] font-label-mono text-outline uppercase">Latency: 14ms</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Skill Tabs Logic
+    function switchSkillTab(tabId) {
+        // Update cards
+        document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Update panes
+        document.querySelectorAll('.skill-detail-pane').forEach(pane => pane.classList.remove('active'));
+        document.getElementById(`pane-${tabId}`).classList.add('active');
+    }
+
+    // Project Toggle Logic
+    function toggleProject(element) {
+        const isActive = element.classList.contains('active');
+        
+        // Close all other projects
+        document.querySelectorAll('.project-row').forEach(row => {
+            row.classList.remove('active');
+        });
+
+        // Toggle clicked project
+        if (!isActive) {
+            element.classList.add('active');
+        }
+    }
+
+    // Micro-interaction for skill bars/sections on scroll
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // If we have progress bars, handle them
+                const bars = entry.target.querySelectorAll('.bg-primary[style*="width"]');
+                bars.forEach(bar => {
+                    const widthMatch = bar.getAttribute('style').match(/width:\s*(\d+%)/);
+                    if (widthMatch) {
+                        const originalWidth = widthMatch[1];
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.transition = 'width 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+                            bar.style.width = originalWidth;
+                        }, 100);
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+</script>
+
+
+
+
+</body></html>
