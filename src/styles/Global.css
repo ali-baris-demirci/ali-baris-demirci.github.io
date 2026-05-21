@@ -2,20 +2,23 @@
 /*    CSS VARIABLES       */
 /* ===================== */
 :root {
-  /* Primary Color Palette - Bright & Energetic */
-  --primary: #1D9BF0;           /* Bright Sky Blue */
-  --primary-dark: #1a7bc4;      /* Darker Sky Blue */
-  --primary-light: #e0f2fe;     /* Light Sky Blue */
-  --primary-lighter: #f0f9ff;   /* Lighter Sky Blue */
+  /* Primary Color Palette - Professional Blue */
+  --primary: #0056A8;           /* Deep Blue */
+  --primary-dark: #003D7A;      /* Darker Blue */
+  --primary-light: #E3F2FD;     /* Light Blue */
+  --primary-lighter: #F0F7FF;   /* Lighter Blue */
   
-  /* Secondary Color Palette - Tech & Modern */
-  --secondary: #0D9488;         /* Tech Teal - for accents */
-  --secondary-light: #CCFBF1;   /* Light Teal */
-  --secondary-lighter: #F0FDFA; /* Lightest Teal */
+  /* Secondary Color Palette - Purple */
+  --secondary: #6B21A8;         /* Rich Purple */
+  --secondary-dark: #581C87;    /* Darker Purple */
+  --secondary-light: #F3E8FF;   /* Light Purple */
+  --secondary-lighter: #FAF5FF; /* Lightest Purple */
   
-  /* Accent Colors - Energetic & Vibrant */
-  --accent: #FF6B35;            /* Vibrant Coral - for CTAs */
-  --accent-light: #FFE5D9;      /* Light Coral */
+  /* Accent Colors - Teal (removed coral) */
+  --accent: #9CA3AF;            /* Soft Silver */
+  --accent-light: #F3F5F8;      /* Light Silver */
+  --silver: #C2C7CE;
+  --silver-light: #F5F7FA;
   
   /* Neutral Colors */
   --bg-white: #FFFFFF;
@@ -154,49 +157,45 @@ img {
   display: block;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  margin: 12px auto 0;
-  border-radius: 2px;
-}
-
-/* ===================== */
+  background: linear-gradient(90deg, var(--primary), var(--silver));
 /*    BUTTONS              */
 /* ===================== */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
-  border-radius: var(--radius-sm);
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   border: 2px solid transparent;
+  white-space: nowrap;
+  min-height: 48px;
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   border-color: transparent;
 }
 
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--primary-dark), #4f46e5);
+  background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
 .btn--outline {
   background-color: transparent;
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .btn--outline:hover {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }

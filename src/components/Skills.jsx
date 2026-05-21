@@ -7,10 +7,10 @@ const DOMAINS = [
   {
     key: 'foundation',
     label: 'The Foundation',
-    sublabel: 'Engineering & Infrastructure',
+    sublabel: 'Data Infrastructure',
     icon: <FaLayerGroup />,
-    tagline: 'The data layer. Without this, nothing works.',
-    accent: 'sky',
+    tagline: 'Building solid data pipelines and schemas.',
+    accent: 'primary',
     columns: [
       {
         title: 'Core Skills',
@@ -31,17 +31,17 @@ const DOMAINS = [
   {
     key: 'insight',
     label: 'The Insight',
-    sublabel: 'Science & Advanced Analytics',
+    sublabel: 'Analytics & ML',
     icon: <FaFlask />,
-    tagline: 'Turning data into patterns. Patterns into predictions.',
-    accent: 'indigo',
+    tagline: 'Analyzing patterns and building predictions.',
+    accent: 'secondary',
     columns: [
       {
         title: 'Core Skills',
         items: [
           { label: 'Programming', detail: 'Python (Pandas, NumPy) · Jupyter · GitHub · VS Code' },
           { label: 'Machine Learning', detail: 'scikit-learn · Keras · PyTorch · OpenCV · YOLO' },
-          { label: 'Advanced Statistics', detail: 'Feature Engineering · A/B Testing · Exploratory Data Analysis (EDA)' },
+          { label: 'Advanced Statistics', detail: 'Feature Engineering · A/B Testing · Data Exploration' },
           { label: 'Validation', detail: 'Data Quality Rules · Error Reduction · Accuracy Controls' },
         ],
       },
@@ -56,10 +56,10 @@ const DOMAINS = [
   {
     key: 'impact',
     label: 'The Impact',
-    sublabel: 'Business Intelligence & Leadership',
+    sublabel: 'Business & Leadership',
     icon: <FaChartPie />,
-    tagline: 'Where data meets decisions. This is what stakeholders see.',
-    accent: 'teal',
+    tagline: 'Delivering insights that drive decisions.',
+    accent: 'accent',
     columns: [
       {
         title: 'Core Skills',

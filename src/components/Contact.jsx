@@ -65,7 +65,7 @@ const Contact = () => {
               <div>
                 <h3 className="contact__card-title">Location</h3>
                 <p className="contact__card-value">{personalInfo.location}</p>
-                <p className="contact__card-sub">Work Permit Holder in Germany · Open to Relocation</p>
+                <p className="contact__card-sub">Work Permit Holder in Germany</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,9 @@
 /* ===================== */
-/*       CONTACT           */
+/*       CONTACT & FOOTER  */
 /* ===================== */
+.contact {
+  padding-bottom: 0;
+}
 .contact__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -88,7 +91,7 @@
 .contact__cta-content {
   text-align: center;
   padding: 48px 36px;
-  background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-lg);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
@@ -122,6 +125,13 @@
   flex-direction: column;
   gap: 12px;
   align-items: center;
+}
+
+/* ===================== */
+/*    RESPONSIVE           */
+/* ===================== */
+.contact__cta-buttons .btn {
+  width: 100%;
 }
 
 /* ===================== */

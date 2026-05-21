@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Ali Baris Demirci",
   title: "Data Analyst | BI Specialist | Data Engineer",
-  location: "Izmir, Türkiye (Open to Relocation)",
+  location: "Izmir, Türkiye",
   email: "alibarisdemirci@gmail.com",
   linkedin: "https://www.linkedin.com/in/ali-baris-demirci",
   github: "https://github.com/ali-baris-demirci",

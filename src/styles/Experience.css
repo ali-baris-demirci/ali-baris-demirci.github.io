@@ -172,9 +172,19 @@
   color: var(--text-muted);
 }
 
+.exp__achievements li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 .exp__achievements li::before {
   content: '✓';
-  color: var(--primary);
+  position: absolute;
+  left: 0;
+  color: var(--accent);
   font-weight: 700;
 }
 

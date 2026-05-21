@@ -6,18 +6,18 @@
 .skills {
   --primary-bg:      var(--primary-light);
   --primary-text:    var(--primary-dark);
-  --primary-border:  #5B8FD4;
-  --primary-glow:    rgba(31, 58, 127, 0.08);
+  --primary-border:  var(--primary);
+  --primary-glow:    rgba(0, 86, 168, 0.08);
 
   --secondary-bg:    var(--secondary-light);
   --secondary-text:  var(--secondary);
-  --secondary-border: #0D9488;
-  --secondary-glow:  rgba(13, 148, 136, 0.08);
+  --secondary-border: var(--secondary);
+  --secondary-glow:  rgba(107, 33, 168, 0.08);
 
   --accent-bg:       var(--accent-light);
-  --accent-text:     #8B7500;
+  --accent-text:     var(--accent);
   --accent-border:   var(--accent);
-  --accent-glow:     rgba(212, 175, 55, 0.08);
+  --accent-glow:     rgba(8, 145, 178, 0.08);
 }
 
 /* ── Tab Bar ── */
@@ -99,6 +99,7 @@
   background: var(--accent-bg);
   border-color: var(--accent-border);
   box-shadow: 0 0 0 4px var(--accent-glow);
+  box-shadow: 0 0 0 4px var(--accent-glow);
 }
 .skills__tab--active.skills__tab--accent .skills__tab-label { color: var(--accent-text); }
 .skills__tab--active.skills__tab--accent .skills__tab-icon  { color: var(--accent-text); opacity: 1; }
@@ -134,7 +135,7 @@
 
 .skills__panel-columns {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
 }
 
@@ -155,25 +156,29 @@
 
 /* ── Skill Cards ── */
 .skills__card {
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 14px 18px;
+  padding: 16px 18px;
   background: var(--bg-white);
   transition: var(--transition);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  box-shadow: var(--shadow-xs);
 }
 
 .skills__card:hover {
-  transform: translateX(3px);
-  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+  border-left-color: var(--primary);
 }
 
 /* Left accent bar per domain */
-.skills__card--sky    { border-left: 3px solid var(--sky-border); }
-.skills__card--indigo { border-left: 3px solid var(--indigo-border); }
-.skills__card--teal   { border-left: 3px solid var(--teal-border); }
+.skills__card--sky    { border-left-color: var(--primary-border); }
+.skills__card--indigo { border-left-color: var(--secondary-border); }
+.skills__card--teal   { border-left-color: var(--accent-border); }
 
 .skills__card-label {
   font-size: 0.88rem;

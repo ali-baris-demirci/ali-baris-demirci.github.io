@@ -64,7 +64,7 @@
 /* Text Styling */
 .hero__greeting {
   font-size: 0.95rem;
-  color: var(--secondary);
+  color: white;
   font-weight: 600;
   margin-bottom: 12px;
   letter-spacing: 1.5px;

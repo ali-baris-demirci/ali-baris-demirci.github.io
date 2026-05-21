@@ -5,7 +5,8 @@
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 60px;
-  align-items: start;
+  align-items: stretch;
+  justify-content: space-between;
 }
 
 .about__summary {
@@ -13,12 +14,14 @@
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 .about__extra {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.8;
+  text-align: justify;
 }
 
 /* Quick Facts */
