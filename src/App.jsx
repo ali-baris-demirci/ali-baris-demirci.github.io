@@ -14,7 +14,7 @@ function App() {
       <main className="max-w-[1440px] mx-auto px-grid-margin py-unit-12">
         <Hero />
         <Skills />
-        <div className="grid grid-cols-1 md:grid-cols-2 mb-unit-16 md:gap-x-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 mb-unit-20 md:gap-x-12">
           <Experience />
           <Education />
         </div>

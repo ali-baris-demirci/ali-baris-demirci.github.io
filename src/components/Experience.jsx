@@ -13,7 +13,7 @@ export default function Experience() {
             <div className={`absolute top-0 -left-[5px] w-2 h-2 ${index === 0 ? "bg-primary" : "bg-outline"}`}></div>
             <div className="flex justify-between items-start mb-1">
               <h4 className="font-headline-md text-[20px] leading-tight">{exp.role}</h4>
-              <span className="font-label-mono text-label-mono text-outline whitespace-nowrap ml-4">{exp.duration}</span>
+              <span className="font-label-mono text-label-mono text-on-surface-variant whitespace-nowrap ml-4">{exp.duration}</span>
             </div>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-1">{exp.company}</p>
             <p className="font-body-sm text-body-sm text-on-surface-variant mb-unit-4">{exp.context || exp.responsibilities.slice(0, 2).join(" · ")}</p>

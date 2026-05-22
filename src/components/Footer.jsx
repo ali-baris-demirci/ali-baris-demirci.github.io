@@ -1,4 +1,5 @@
 import { personalInfo } from "../data/portfolioData"
+import Hourglass from "./Hourglass"
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -7,13 +8,17 @@ export default function Footer() {
     <footer className="w-full bg-surface-container-low border-t border-outline-variant">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-row justify-between items-center py-unit-8 px-grid-margin border-b border-outline-variant border-dashed">
-          <div className="font-label-mono text-label-mono font-bold tracking-tighter text-primary">
-            <span className="material-symbols-outlined animate-hourglass">hourglass_empty</span>
+          <div className="font-label-mono text-label-mono font-bold tracking-tighter text-primary flex items-center">
+            <Hourglass />
           </div>
           <div className="flex gap-unit-6">
             <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#top">Home</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#001_skills">Skills</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#002_experiences">Experiences</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#003_education">Education</a>
             <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#005_projects">Projects</a>
-            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#006_social">Contact</a>
+            <a className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">Resume</a>
           </div>
         </div>
         <div className="flex flex-row justify-between items-center py-unit-6 px-grid-margin">

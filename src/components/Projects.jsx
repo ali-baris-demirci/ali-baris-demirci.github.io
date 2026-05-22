@@ -14,14 +14,14 @@ export default function Projects() {
   }
 
   return (
-    <section className="mb-unit-16" id="005_projects">
+    <section className="mb-unit-20" id="005_projects">
       <div className="flex items-baseline gap-unit-4 mb-unit-8 border-b border-outline-variant pb-unit-2">
         <h2 className="font-label-mono text-label-mono text-on-surface-variant uppercase">Projects</h2>
         <span className="font-label-mono text-label-mono text-outline ml-auto">005</span>
       </div>
       <div className="grid grid-cols-1 gap-0 border-t border-l border-outline-variant">
         {allProjects.map((project, index) => (
-          <div key={index} className={`project-row group border-r border-b border-outline-variant bg-white/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer ${activeIndex === index ? "active" : ""}`} onClick={() => toggleProject(index)}>
+          <div key={index} className={`project-row group border-r border-b border-outline-variant bg-surface-container-lowest/50 hover:bg-surface-container-low transition-all duration-300 cursor-pointer ${activeIndex === index ? "active" : ""}`} onClick={() => toggleProject(index)}>
             <div className="grid grid-cols-12 items-center p-unit-4">
               <div className="col-span-1 font-label-mono text-[10px] text-outline">{String(index + 1).padStart(3, "0")}</div>
               <div className="col-span-5 md:col-span-7">
