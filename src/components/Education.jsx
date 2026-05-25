@@ -29,18 +29,18 @@ export default function Education() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {interests.map((item, index) => {
-            const iconMap = {
-              frisbee: "local_pizza",
-              sports: "sports_basketball",
-              chess: "chess",
-              gaming: "sports_esports",
-              boardgames: "directions_car",
-              music: "music_note",
+            const emojiMap = {
+              frisbee: "🥏",
+              sports: "⚽",
+              chess: "♟️",
+              gaming: "🎮",
+              boardgames: "🎲",
+              music: "🎵",
             }
             return (
-              <div key={index} className="border border-outline-variant p-unit-4 hover:border-primary transition-all group flex items-center gap-4 bg-surface-container-lowest">
-                <span className="material-symbols-outlined text-3xl text-primary/60 group-hover:text-primary transition-colors">{iconMap[item.icon] || "interests"}</span>
-                <h4 className="font-headline-md text-[16px] leading-tight group-hover:text-primary transition-colors">{item.name}</h4>
+              <div key={index} className="border border-outline-variant p-unit-4 hover:border-primary transition-all group flex items-center gap-3 bg-surface-container-lowest">
+                <span className="text-[20px] leading-none flex-shrink-0">{emojiMap[item.icon] || "✨"}</span>
+                <h4 className="font-headline-md text-headline-sm leading-tight group-hover:text-primary transition-colors">{item.name}</h4>
               </div>
             )
           })}

@@ -16,8 +16,8 @@ export default function Navbar() {
           <a href="#006_social" className="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Contact</a>
         </div>
         <div className="flex items-center">
-          <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer" className="font-label-mono text-label-mono border border-outline px-unit-4 py-unit-2 hover:bg-surface-container-low transition-all active:scale-95 uppercase inline-flex items-center gap-2">
-            <span className="material-symbols-outlined text-[16px]">download</span>
+          <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer" className="font-label-mono text-label-mono border border-outline px-unit-4 py-unit-2 hover:bg-surface-container-low transition-all active:scale-95 uppercase inline-flex items-center gap-1">
+            <span className="material-symbols-outlined text-[14px]">download</span>
             RESUME
           </a>
         </div>

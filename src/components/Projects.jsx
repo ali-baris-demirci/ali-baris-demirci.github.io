@@ -45,6 +45,7 @@ export default function Projects() {
                     )}
                     {project.link && (
                       <div className="border-l-2 border-primary pl-2">
+                        <br />
                         <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={(e) => e.stopPropagation()}>View Project &rarr;</a>
                       </div>
                     )}
