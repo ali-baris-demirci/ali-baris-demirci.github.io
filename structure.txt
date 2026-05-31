@@ -1,45 +1,47 @@
 ali-baris-demirci.github.io/
 ├── public/
-│   ├── profile.png                        ← profile photo
-│   ├── Ali_Baris_Demirci_Resume.pdf    ← master resume
+│   ├── 404.html                        ← SPA redirect for unknown routes (GitHub Pages)
+│   ├── Ali_Baris_Demirci_Resume.pdf    ← master resume (downloadable)
 │   ├── favicon.svg                     ← hourglass favicon
 │   ├── og-preview.jpg                  ← Open Graph preview image (1200×630)
+│   ├── profile.jpg                     ← profile photo (Hero section)
 │   ├── robots.txt                      ← search engine crawler rules
 │   ├── sitemap.xml                     ← sitemap for Google indexing
-│   └── 404.html                        ← SPA redirect for unknown routes
+│   └── images/
+│       ├── big_data.png                ← project image: Big Data Analytics
+│       ├── matrix.png                  ← project image: Matrix Yönetim Sistemi
+│       ├── migration.png               ← project image: Migration Dashboard
+│       ├── ml.png                      ← project image: Machine Learning
+│       ├── qliksense.png               ← project image: Qlik Sense Dashboard
+│       ├── snake.png                   ← project image: Snake Game AI
+│       ├── star.png                    ← project image: Star Schema
+│       ├── the_foundation.png          ← skill section bg: Data Foundations
+│       ├── the_impact.png              ← skill section bg: Business Impact
+│       ├── the_insight.png             ← skill section bg: Actionable Insights
+│       └── xray.jpeg                   ← project image: X-Ray Classification
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Experience.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Education.jsx
-│   │   ├── Certifications.jsx
-│   │   ├── Interests.jsx
-│   │   ├── Contact.jsx
-│   │   └── Footer.jsx
+│   │   ├── Contact.jsx                 ← contact form & links section
+│   │   ├── Education.jsx               ← academic timeline section
+│   │   ├── Experience.jsx              ← career timeline with expandable details
+│   │   ├── Footer.jsx                  ← socials & copyright
+│   │   ├── Hero.jsx                    ← intro, photo, CTA buttons, key stats
+│   │   ├── Hourglass.jsx               ← animated SVG hourglass (loading screen)
+│   │   ├── Navbar.jsx                  ← top navigation with smooth scroll
+│   │   ├── Projects.jsx                ← project cards with expandable details
+│   │   └── Skills.jsx                  ← categorized skills with detail panes
 │   ├── data/
-│   │   └── portfolioData.js            ← all site content lives here
+│   │   └── portfolioData.js            ← all site content (single source of truth)
 │   ├── styles/
-│   │   ├── Global.css                  ← CSS variables, reset, utilities
-│   │   ├── Navbar.css
-│   │   ├── Hero.css
-│   │   ├── About.css
-│   │   ├── Skills.css
-│   │   ├── Experience.css
-│   │   ├── Projects.css
-│   │   ├── Education.css
-│   │   ├── Certifications.css
-│   │   ├── Interests.css
-│   │   ├── Contact.css
-│   │   └── Footer.css
-│   ├── App.jsx
-│   └── main.jsx
-├── index.html
-├── package.json
-├── vite.config.js
+│   │   └── Global.css                  ← Tailwind directives + custom CSS (animations, components)
+│   ├── App.jsx                         ← root layout orchestrating all sections
+│   └── main.jsx                        ← React entry point
+├── index.html                          ← HTML shell with meta tags, fonts, structured data
+├── package.json                        ← dependencies & scripts (dev, build, deploy)
+├── vite.config.js                      ← Vite configuration (React plugin, base path)
+├── tailwind.config.js                  ← Tailwind theme (colors, fonts, spacing, animations)
+├── postcss.config.js                   ← PostCSS (Tailwind + Autoprefixer)
+├── eslint.config.js                    ← ESLint flat config (React hooks + refresh)
 ├── structure.txt                       ← this file
 ├── LICENSE                             ← MIT for code, © for content
-└── README.md
+└── README.md                           ← project overview & setup instructions

@@ -51,10 +51,14 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-                <div className="md:col-span-4 bg-primary/5 border border-primary/10 rounded-2xl p-4">
-                  <div className="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary text-5xl">description</span>
-                  </div>
+                <div className="md:col-span-4 bg-primary/5 border border-primary/10 rounded-2xl overflow-hidden">
+                  {project.image ? (
+                    <img src={project.image} alt={project.name} className="w-full h-full object-cover aspect-video" />
+                  ) : (
+                    <div className="w-full aspect-video blueprint-dot opacity-40 flex items-center justify-center p-4">
+                      <span className="material-symbols-outlined text-primary text-5xl">description</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
