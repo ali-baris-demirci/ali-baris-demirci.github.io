@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Ali Baris Demirci",
-  title: "Data Analyst | BI Specialist | Data Engineer",
+  title: "Analytics Engineer | BI Specialist | Data Engineer",
   location: "Izmir, Türkiye",
   email: "alibarisdemirci@gmail.com",
   linkedin: "https://www.linkedin.com/in/ali-baris-demirci",
@@ -9,13 +9,13 @@ export const personalInfo = {
   profilePhoto: "/profile.jpg",
 }
 
-export const summary = `Data professional with 6+ years of experience delivering end-to-end BI solutions, scalable data pipelines, and executive-level dashboards across aviation, e-commerce, retail, and technology industries. Equal strength in SQL-driven analytics and business intelligence, with hands-on ETL development experience across the Microsoft Azure stack and BI platforms. Experienced in translating complex data into clear, decision-driving insights, with a track record of embedding directly with executive leadership to support real-time business decisions. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture.`
+export const summary = `Data professional with 6+ years of experience specializing in Analytics Engineering, Data Engineering, and Business Intelligence. I repeatedly join organizations with fragmented, legacy, or evolving data environments and help build practical analytical foundations through data modeling, reporting, integration, and business understanding. Hands-on across the Microsoft Azure stack (Azure Data Factory, Azure SQL) and BI platforms (Power BI, Qlik), with a strong SQL foundation across Oracle, PL/SQL, T-SQL, and PostgreSQL. Currently expanding into the modern data engineering stack, including dbt, Snowflake, and Apache Kafka event streaming architecture.`
 
 export const highlights = [
   { label: "Years Experience", value: "6+" },
-  { label: "Stakeholders Served", value: "100+" },
-  { label: "Dashboards Delivered", value: "80+" },
-  { label: "Industries", value: "5+" },
+  { label: "Dashboard Users", value: "100+" },
+  { label: "Airports Served", value: "40+" },
+  { label: "Countries", value: "3+" },
 ]
 
 export const skills = {
@@ -110,6 +110,25 @@ export const experience = {
       tags: ["Power BI", "Salsify", "Amazon", "Acumatica", "E-Commerce"],
     },
     {
+      id: 5,
+      company: "Oses Group",
+      role: "Data Analyst",
+      duration: "Feb 2021 – May 2021",
+      location: "Istanbul, Turkey",
+      context: "Low data maturity, fragmented operational systems, and Excel-heavy reporting.",
+      responsibilities: [
+        "Built operational and franchise reporting from fragmented operational data",
+        "Consolidated data from multiple operational sources",
+        "Supported a nationwide centralized pricing rollout",
+        "Digitized documentation and automated counting tasks with shell scripting",
+      ],
+      achievements: [
+        "Consolidated reporting from fragmented operational systems, supporting business decisions without a mature reporting platform",
+        "Supported a centralized pricing rollout across the organization, digitizing approvals and automating counts with shell scripting",
+      ],
+      tags: ["Excel", "Operational Reporting", "Shell Scripting", "Data Consolidation"],
+    },
+    {
       id: 3,
       company: "Celebi Aviation",
       role: "Data Analytics Specialist",
@@ -162,13 +181,6 @@ export const experience = {
     },
   ],
   earlier: [
-    {
-      company: "Oses Group",
-      role: "Reporting Specialist",
-      duration: "Feb 2021 – May 2021",
-      location: "Istanbul, Turkey",
-      description: "Excel-based pricing reports for stakeholders using company-specific ERP software. Additional Photoshop work for the team.",
-    },
     {
       company: "Artı Technologies",
       role: "QA Intern",

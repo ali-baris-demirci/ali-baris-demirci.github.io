@@ -1,6 +1,6 @@
 # ali-baris-demirci.github.io
 
-Personal portfolio website for **Ali Baris Demirci** — Data Analyst, BI Specialist & Data Engineer.
+Personal portfolio website for **Ali Baris Demirci** — Analytics Engineer, BI Specialist & Data Engineer.
 
 🔗 **Live:** [ali-baris-demirci.github.io](https://ali-baris-demirci.github.io)
 
@@ -24,7 +24,7 @@ A minimalist, responsive portfolio built to showcase my professional experience,
 ## Project Structure
 ali-baris-demirci.github.io/
 ├── public/
-│ ├── kafa.png ← profile photo
+│ ├── profile.jpg ← profile photo
 │ ├── Ali_Baris_Demirci_Resume.pdf ← master resume
 │ ├── favicon.svg ← hourglass favicon
 │ ├── og-preview.jpg ← Open Graph preview image

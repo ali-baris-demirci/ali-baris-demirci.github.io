@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="md:col-span-8">
 
         <h1 className="font-headline-xl text-headline-xl text-primary leading-tight mb-unit-8">
-          Ali Baris Demirci <span className="text-secondary">-</span> Data Analyst
+          Ali Baris Demirci <span className="text-secondary">-</span> Analytics Engineer
         </h1>
         <div className="flex items-center gap-unit-4 mb-unit-6">
           <span className="inline-flex items-center gap-1.5 font-label-mono text-[12px] text-on-surface-variant">
